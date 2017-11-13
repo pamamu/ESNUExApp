@@ -25,14 +25,13 @@ import android.arch.persistence.room.Query;
 
 import java.util.List;
 
-import es.pablomacias.esnuex_app.data.db.entity.NewEntity;
+import es.pablomacias.esnuex_app.data.db.entity.PartnerEntity;
 
 /**
  * Created by pablomaciasmu on 13/11/17.
  */
 @Dao
-public interface NewDao {
-    @Query("SELECT * FROM New")
-    List<NewEntity> loadAllsNews();
-
+public interface PartnerDao {
+    @Query("SELECT * FROM Partner where delegacion = :delegation")
+    List<PartnerEntity> loadAllsByDelegation(int delegation);
 }

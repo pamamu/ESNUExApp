@@ -18,21 +18,24 @@
  *
  */
 
-package es.pablomacias.esnuex_app.data.db.dao;
-
-import android.arch.persistence.room.Dao;
-import android.arch.persistence.room.Query;
-
-import java.util.List;
-
-import es.pablomacias.esnuex_app.data.db.entity.NewEntity;
+package es.pablomacias.esnuex_app.data.db.converter;
 
 /**
  * Created by pablomaciasmu on 13/11/17.
  */
-@Dao
-public interface NewDao {
-    @Query("SELECT * FROM New")
-    List<NewEntity> loadAllsNews();
 
+import android.arch.persistence.room.TypeConverter;
+
+import java.util.Date;
+
+public class DateConverter {
+    @TypeConverter
+    public static Date toDate(Long timestamp) {
+        return timestamp == null ? null : new Date(timestamp);
+    }
+
+    @TypeConverter
+    public static Long toTimestamp(Date date) {
+        return date == null ? null : date.getTime();
+    }
 }

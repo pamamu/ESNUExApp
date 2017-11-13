@@ -20,6 +20,9 @@
 
 package es.pablomacias.esnuex_app.data.db.entity;
 
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
 import android.net.Uri;
 
 import java.util.Date;
@@ -30,11 +33,17 @@ import es.pablomacias.esnuex_app.data.model.New;
  * Created by pablomaciasmu on 13/11/17.
  */
 
-public class NewEntity implements New{
+@Entity(tableName = "New")
+public class NewEntity implements New {
+    @PrimaryKey
     private int id;
+    @ColumnInfo(name = "titulo")
     private String title;
+    @ColumnInfo(name = "cuerpo")
     private String body;
+    @ColumnInfo(name = "imagen")
     private Uri image;
+    @ColumnInfo(name = "fecha")
     private Date date;
 
     @Override

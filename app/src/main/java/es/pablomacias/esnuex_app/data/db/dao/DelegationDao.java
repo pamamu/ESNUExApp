@@ -20,6 +20,9 @@
 
 package es.pablomacias.esnuex_app.data.db.dao;
 
+import android.arch.persistence.room.Dao;
+import android.arch.persistence.room.Query;
+
 import java.util.List;
 
 import es.pablomacias.esnuex_app.data.db.entity.DelegationEntity;
@@ -28,8 +31,9 @@ import es.pablomacias.esnuex_app.data.db.entity.DelegationEntity;
  * Created by pablomaciasmu on 13/11/17.
  */
 
+@Dao
 public interface DelegationDao {
-
+    @Query("SELECT * FROM Delegation")
     List<DelegationEntity> loadAllsDelegation();
 
 }

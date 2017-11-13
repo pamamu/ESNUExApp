@@ -20,6 +20,9 @@
 
 package es.pablomacias.esnuex_app.data.db.entity;
 
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
 import android.net.Uri;
 
 import es.pablomacias.esnuex_app.data.model.Partner;
@@ -28,13 +31,21 @@ import es.pablomacias.esnuex_app.data.model.Partner;
  * Created by pablomaciasmu on 13/11/17.
  */
 
+@Entity(tableName = "Partner")
 public class PartnerEntity implements Partner {
+    @PrimaryKey
     private int id;
+    @ColumnInfo(name = "nombre")
     private String name;
+    @ColumnInfo(name = "tipo")
     private String category;
+    @ColumnInfo(name = "descripcion")
     private String description;
+    @ColumnInfo(name = "ubicacion")
     private String address;
+    @ColumnInfo(name = "delegacion")
     private int delegation;
+    @ColumnInfo(name = "imagen")
     private Uri image;
 
     @Override

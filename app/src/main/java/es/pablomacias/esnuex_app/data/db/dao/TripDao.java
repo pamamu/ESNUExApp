@@ -21,18 +21,29 @@
 package es.pablomacias.esnuex_app.data.db.dao;
 
 import android.arch.persistence.room.Dao;
+import android.arch.persistence.room.Delete;
+import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
+import android.arch.persistence.room.Update;
 
 import java.util.List;
 
-import es.pablomacias.esnuex_app.data.db.entity.NewEntity;
+import es.pablomacias.esnuex_app.data.db.entity.TripEntity;
 
 /**
  * Created by pablomaciasmu on 13/11/17.
  */
 @Dao
-public interface NewDao {
-    @Query("SELECT * FROM New")
-    List<NewEntity> loadAllsNews();
+public interface TripDao {
+    @Query("SELECT * FROM Trip where delegacion =:delegation")
+    List<TripEntity> loadAllsByDelegation(int delegation);
 
+    @Insert
+    void insert(TripEntity tripEntity);
+
+    @Update
+    void update(TripEntity tripEntity);
+
+    @Delete
+    void delete(TripEntity tripEntity);
 }

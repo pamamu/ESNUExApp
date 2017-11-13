@@ -20,15 +20,23 @@
 
 package es.pablomacias.esnuex_app.data.db.entity;
 
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
+
 import es.pablomacias.esnuex_app.data.model.Delegation;
 
 /**
  * Created by pablomaciasmu on 13/11/17.
  */
 
+@Entity(tableName = "Delegation")
 public class DelegationEntity implements Delegation{
+    @PrimaryKey
     private int id;
+    @ColumnInfo(name = "nombre")
     private String name;
+    @ColumnInfo(name = "ubicacion")
     private String address;
 
     @Override

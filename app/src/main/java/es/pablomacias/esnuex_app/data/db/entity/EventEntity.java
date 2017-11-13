@@ -20,6 +20,9 @@
 
 package es.pablomacias.esnuex_app.data.db.entity;
 
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
 import android.net.Uri;
 
 import java.util.Date;
@@ -30,13 +33,21 @@ import es.pablomacias.esnuex_app.data.model.Event;
  * Created by pablomaciasmu on 13/11/17.
  */
 
+@Entity(tableName = "Event")
 public class EventEntity implements Event {
+    @PrimaryKey
     private int id;
+    @ColumnInfo(name = "nombre")
     private String name;
+    @ColumnInfo(name = "ubicacion")
     private String address;
+    @ColumnInfo(name = "delegacion")
     private int delegation;
+    @ColumnInfo(name = "imagen")
     private Uri image;
+    @ColumnInfo(name = "fecha_inicio")
     private Date dateTime;
+    @ColumnInfo(name = "descripcion")
     private String description;
 
     @Override

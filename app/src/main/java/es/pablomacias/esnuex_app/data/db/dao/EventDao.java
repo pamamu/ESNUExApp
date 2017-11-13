@@ -20,6 +20,12 @@
 
 package es.pablomacias.esnuex_app.data.db.dao;
 
+import android.arch.persistence.room.Dao;
+import android.arch.persistence.room.Delete;
+import android.arch.persistence.room.Insert;
+import android.arch.persistence.room.Query;
+import android.arch.persistence.room.Update;
+
 import java.util.List;
 
 import es.pablomacias.esnuex_app.data.db.entity.EventEntity;
@@ -27,15 +33,18 @@ import es.pablomacias.esnuex_app.data.db.entity.EventEntity;
 /**
  * Created by pablomaciasmu on 13/11/17.
  */
-
+@Dao
 public interface EventDao {
+    @Query("SELECT * FROM Event where delegacion = :delegation")
     List<EventEntity> loadAllsByDelegation(int delegation);
 
-    EventEntity getById(int id);
-
+    @Insert
     void insert(EventEntity eventEntity);
 
+    @Update
     void update(EventEntity eventEntity);
 
-    void deleteById(int id);
+    @Delete
+    void delete(EventEntity eventEntity);
+
 }
