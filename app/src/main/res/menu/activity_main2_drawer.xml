@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2017 by Pablo Macias Munoz
+  ~ pamaciasm@alumnos.unex.es
+  ~ This program is free software; you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~
+  ~ the Free Software Foundation; either version 2 of the License,
+  ~ (at your option) any later version.
+  ~ This program is distributed in the hope that it will be useful
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public Lice
+  ~ along with this program; if not, write to the
+  ~ Free Software Foundation, Inc.,
+  ~ 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+  ~
+  -->
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/home"
+            android:icon="@drawable/esn_star"
+            android:title="@string/section_name" />
+        <item
+            android:id="@+id/events"
+            android:icon="@drawable/event"
+            android:title="@string/events" />
+
+        <item
+            android:id="@+id/trips"
+            android:icon="@drawable/bus"
+            android:title="@string/trips" />
+
+        <item
+            android:id="@+id/partners"
+            android:icon="@drawable/partner"
+            android:title="@string/partners" />
+
+        <item
+            android:id="@+id/contact"
+            android:icon="@drawable/contact"
+            android:title="@string/contact" />
+
+        <item
+            android:id="@+id/management"
+            android:icon="@drawable/management"
+            android:title="@string/management" />
+        <item
+            android:id="@+id/login"
+            android:icon="@drawable/signinup"
+            android:title="@string/login" />
+    </group>
+
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Share" />
+            <item
+                android:id="@+id/nav_send"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Send" />
+        </menu>
+    </item>
+
+</menu>

@@ -1,3 +1,23 @@
+<!--
+  ~ Copyright (C) 2017 by Pablo Macias Munoz
+  ~ pamaciasm@alumnos.unex.es
+  ~ This program is free software; you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~
+  ~ the Free Software Foundation; either version 2 of the License,
+  ~ (at your option) any later version.
+  ~ This program is distributed in the hope that it will be useful
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public Lice
+  ~ along with this program; if not, write to the
+  ~ Free Software Foundation, Inc.,
+  ~ 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+  ~
+  -->
+
 <resources>
 
     <!-- Base application theme. -->
@@ -7,6 +27,48 @@
         <item name="colorPrimaryDark">@color/esn_dark_blue</item>
         <item name="colorAccent">@color/esn_magenta</item>
     </style>
+
+    <style name="NoTittleBarTheme" parent="AppTheme">
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="NoTittleBarTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="profile_name">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/profile_name</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="event_name">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/TitleInfo</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="event_date">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/Subtitle</item>
+    </style>
+
+    <style name="drawer_list_item">
+        <item name="android:textColor">@color/grey</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/profile_name</item>
+    </style>
+
+    <style name="NoTittleBarTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="NoTittleBarTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 
 </resources>

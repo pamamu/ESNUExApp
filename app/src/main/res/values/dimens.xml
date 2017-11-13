@@ -1,6 +1,35 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (C) 2017 by Pablo Macias Munoz
+  ~ pamaciasm@alumnos.unex.es
+  ~ This program is free software; you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~
+  ~ the Free Software Foundation; either version 2 of the License,
+  ~ (at your option) any later version.
+  ~ This program is distributed in the hope that it will be useful
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public Lice
+  ~ along with this program; if not, write to the
+  ~ Free Software Foundation, Inc.,
+  ~ 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+  ~
+  -->
+
 <resources>
     <dimen name="TitleText">20sp</dimen>
+    <dimen name="TitleInfo">25sp</dimen>
     <dimen name="Subtitle">17sp</dimen>
-    <dimen name="body">15</dimen>
+    <dimen name="body">15sp</dimen>
+    <dimen name="profile_name">17sp</dimen>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="nav_header_vertical_spacing">16dp</dimen>
+    <dimen name="nav_header_height">160dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="app_bar_height">250dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
 </resources>

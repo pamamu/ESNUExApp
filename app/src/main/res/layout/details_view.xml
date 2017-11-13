@@ -1,0 +1,94 @@
+<!--
+  ~ Copyright (C) 2017 by Pablo Macias Munoz
+  ~ pamaciasm@alumnos.unex.es
+  ~ This program is free software; you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~
+  ~ the Free Software Foundation; either version 2 of the License,
+  ~ (at your option) any later version.
+  ~ This program is distributed in the hope that it will be useful
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public Lice
+  ~ along with this program; if not, write to the
+  ~ Free Software Foundation, Inc.,
+  ~ 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+  ~
+  -->
+
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:fitsSystemWindows="true"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
+            app:toolbarId="@id/details_toolbar">
+
+            <ImageView
+                android:id="@+id/view_image"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/event1"
+                app:layout_collapseMode="parallax"
+                app:layout_collapseParallaxMultiplier="0.25" />
+
+            <FrameLayout
+                android:id="@+id/main_framelayout_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom">
+
+                <android.support.v7.widget.Toolbar
+                    android:id="@+id/details_toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:background="@color/esn_cyan"
+                    app:contentInsetLeft="0dp"
+                    app:contentInsetStart="0dp"
+                    app:layout_anchor="@id/main_framelayout_title"
+                    app:popupTheme="@style/NoTittleBarTheme.PopupOverlay">
+
+                    <include
+                        android:id="@+id/toolbar_info"
+                        layout="@layout/details_header" />
+
+                </android.support.v7.widget.Toolbar>
+
+            </FrameLayout>
+        </android.support.design.widget.CollapsingToolbarLayout>
+    </android.support.design.widget.AppBarLayout>
+
+    <include layout="@layout/content_view" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/fab_margin"
+        android:backgroundTint="@color/white"
+        android:tint="@color/esn_magenta"
+        app:borderWidth="0dp"
+        app:layout_anchor="@id/view_image"
+        app:layout_anchorGravity="bottom|end"
+        app:srcCompat="@drawable/go" />
+
+
+
+    <include layout="@layout/details_footer"/>
+
+
+</android.support.design.widget.CoordinatorLayout>
