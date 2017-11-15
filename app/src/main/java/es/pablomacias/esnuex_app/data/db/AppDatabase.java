@@ -30,13 +30,11 @@ import es.pablomacias.esnuex_app.data.db.dao.DelegationDao;
 import es.pablomacias.esnuex_app.data.db.dao.EventDao;
 import es.pablomacias.esnuex_app.data.db.dao.NewDao;
 import es.pablomacias.esnuex_app.data.db.dao.PartnerDao;
-import es.pablomacias.esnuex_app.data.db.dao.PersonDao;
 import es.pablomacias.esnuex_app.data.db.dao.TripDao;
 import es.pablomacias.esnuex_app.data.db.entity.DelegationEntity;
 import es.pablomacias.esnuex_app.data.db.entity.EventEntity;
 import es.pablomacias.esnuex_app.data.db.entity.NewEntity;
 import es.pablomacias.esnuex_app.data.db.entity.PartnerEntity;
-import es.pablomacias.esnuex_app.data.db.entity.PersonEntity;
 import es.pablomacias.esnuex_app.data.db.entity.TripEntity;
 
 /**
@@ -44,7 +42,7 @@ import es.pablomacias.esnuex_app.data.db.entity.TripEntity;
  */
 
 @Database(entities = {DelegationEntity.class, EventEntity.class, NewEntity.class,
-        PartnerEntity.class, PersonEntity.class, TripEntity.class},
+        PartnerEntity.class, TripEntity.class},
         version = 1)
 @TypeConverters({DateConverter.class, UriConverter.class})
 public abstract class AppDatabase extends RoomDatabase {
@@ -57,8 +55,6 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract NewDao newDao();
 
     public abstract PartnerDao partnerDao();
-
-    public abstract PersonDao personDao();
 
     public abstract TripDao tripDao();
 }

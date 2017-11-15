@@ -18,24 +18,33 @@
  *
  */
 
-package es.pablomacias.esnuex_app.data.model;
+package es.pablomacias.esnuex_app.ui.main.presenter;
 
-import android.net.Uri;
+import android.content.Context;
+
+import java.util.ArrayList;
+
+import es.pablomacias.esnuex_app.common.utils.models.Link;
+import es.pablomacias.esnuex_app.ui.drawer.presenter.DrawerPresenter;
 
 /**
- * Created by pablomaciasmu on 13/11/17.
+ * Created by pablomaciasmu on 15/11/17.
  */
 
-public interface Person {
-    int getId();
+public class MainPresenter {
+    private Context context;
+    private DrawerPresenter drawerPresenter;
+    private ArrayList<Link> links;
 
-    String getName();
+    public MainPresenter(Context context, DrawerPresenter drawerPresenter) {
+        this.context = context;
+        this.drawerPresenter = drawerPresenter;
+        links = drawerPresenter.getLinks();
+    }
 
-    String getLastName();
+    public void onLinkClick(int pos) {
+        Link link_pressed = links.get(pos);
+    }
 
-    String getFullName();
 
-    String getEmail();
-
-    Uri getPhoto();
 }

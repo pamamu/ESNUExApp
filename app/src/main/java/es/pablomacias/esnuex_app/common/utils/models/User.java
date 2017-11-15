@@ -18,42 +18,35 @@
  *
  */
 
-package es.pablomacias.esnuex_app.data.db.entity;
+package es.pablomacias.esnuex_app.common.utils.models;
 
-import android.arch.persistence.room.ColumnInfo;
-import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.PrimaryKey;
-import android.net.Uri;
-
-import es.pablomacias.esnuex_app.data.model.Person;
+import com.google.gson.annotations.SerializedName;
 
 /**
- * Created by pablomaciasmu on 13/11/17.
+ * Created by pablomaciasmu on 15/11/17.
  */
 
-@Entity(tableName = "Person")
-public class PersonEntity implements Person {
-    @PrimaryKey
-    private int id;
-    @ColumnInfo(name = "nombre")
+public class User {
+    @SerializedName("name")
     private String name;
-    @ColumnInfo(name = "apellidos")
-    private String lastName;
-    @ColumnInfo(name = "email")
+    @SerializedName("lastname")
+    private String lastname;
+    @SerializedName("email")
     private String email;
-    @ColumnInfo(name = "imagen")
-    private Uri photo;
+    @SerializedName("photo")
+    private String photo;
 
-    @Override
-    public int getId() {
-        return id;
+    public User(String name, String lastname, String email, String photo) {
+        this.name = name;
+        this.lastname = lastname;
+        this.email = email;
+        this.photo = photo;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public User() {
+
     }
 
-    @Override
     public String getName() {
         return name;
     }
@@ -62,21 +55,14 @@ public class PersonEntity implements Person {
         this.name = name;
     }
 
-    @Override
-    public String getLastName() {
-        return lastName;
+    public String getLastname() {
+        return lastname;
     }
 
-    @Override
-    public String getFullName() {
-        return this.name + ' ' + this.lastName;
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    @Override
     public String getEmail() {
         return email;
     }
@@ -85,12 +71,22 @@ public class PersonEntity implements Person {
         this.email = email;
     }
 
-    @Override
-    public Uri getPhoto() {
+    public String getPhoto() {
         return photo;
     }
 
-    public void setPhoto(Uri photo) {
+    public void setPhoto(String photo) {
         this.photo = photo;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "name='" + name + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", email='" + email + '\'' +
+                ", photo='" + photo + '\'' +
+                '}';
+
     }
 }

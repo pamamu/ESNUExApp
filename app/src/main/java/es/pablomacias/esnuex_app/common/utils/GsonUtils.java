@@ -18,30 +18,17 @@
  *
  */
 
-package es.pablomacias.esnuex_app.data.db.dao;
+package es.pablomacias.esnuex_app.common.utils;
 
-import android.arch.persistence.room.Dao;
-import android.arch.persistence.room.Delete;
-import android.arch.persistence.room.Insert;
-import android.arch.persistence.room.Query;
-import android.arch.persistence.room.Update;
-
-import es.pablomacias.esnuex_app.data.db.entity.PersonEntity;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 /**
- * Created by pablomaciasmu on 13/11/17.
+ * Created by pablomaciasmu on 15/11/17.
  */
-@Dao
-public interface PersonDao {
-    @Query("SELECT * FROM Person where id =:id")
-    PersonEntity getPersonById(int id);
 
-    @Insert
-    void insert(PersonEntity personEntity);
-
-    @Update
-    void update(PersonEntity personEntity);
-
-    @Delete
-    void delete(PersonEntity personEntity);
+public class GsonUtils {
+    public static Gson getGsonInstance() {
+        return new GsonBuilder().setDateFormat("MMM dd, yyyy HH:mm:ss").create();
+    }
 }
