@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright (C) 2017 by Pablo Macias Munoz
   ~ pamaciasm@alumnos.unex.es
   ~ This program is free software; you can redistribute it and/or modify
@@ -21,6 +20,7 @@
 
 <animated-rotate xmlns:android="http://schemas.android.com/apk/res/android"
     android:drawable="@drawable/esn"
-    android:duration="1"
-    android:pivotX="50%"
-    android:pivotY="50%" />
+    android:pivotX="50.0%"
+    android:pivotY="50.0%"
+    android:fromDegrees="0.0"
+    android:toDegrees="360.0" />

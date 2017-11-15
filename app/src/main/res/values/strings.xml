@@ -46,6 +46,10 @@
     <string name="discount">Discount</string>
     <string name="contact_v">Contact via...</string>
     <string name="title_activity_main">MainActivity</string>
+    <string name="social">Social Erasmus</string>
+    <string name="movin">Mov\'in Europe</string>
+    <string name="excha">ExchangeAbility</string>
+    <string name="eis">Erasmus in Schools</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -142,4 +146,8 @@
         "For example, position the FAB to one side of stream of a cards so the FAB won’t interfere "
         "when a user tries to pick up one of cards.\n\n"
     </string>
+    <string name="Event1">Traffic Light Party</string>
+    <string name="Event1_Date">Wednesday Oct 11 - 23:00</string>
+    <string name="share">SHARE</string>
+    <string name="explore">EXPLORE</string>
 </resources>

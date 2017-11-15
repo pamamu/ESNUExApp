@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright (C) 2017 by Pablo Macias Munoz
   ~ pamaciasm@alumnos.unex.es
   ~ This program is free software; you can redistribute it and/or modify
@@ -20,24 +19,28 @@
   -->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="275dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="start"
-    android:background="@color/white"
-    android:choiceMode="singleChoice"
     android:orientation="vertical">
 
-    <include layout="@layout/nav_header_main" />
 
-    <ListView
-        android:id="@+id/drawer_list"
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tabs"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:divider="@color/transparent"
-        android:dividerHeight="0dp">
+        android:layout_height="wrap_content"
+        app:tabMode="fixed"
+        android:background="@color/esn_cyan"
+        android:minHeight="?attr/actionBarSize"
+        app:tabGravity="fill"
+        app:tabTextColor="@color/black"
+        app:tabSelectedTextColor="@color/colorAccent" />
 
-    </ListView>
+    <android.support.v4.view.ViewPager
+        android:id="@+id/pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 
 </LinearLayout>

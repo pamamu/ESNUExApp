@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?><!--
+<?xml version="1.0" encoding="utf-8"?>
+<!--
   ~ Copyright (C) 2017 by Pablo Macias Munoz
   ~ pamaciasm@alumnos.unex.es
   ~ This program is free software; you can redistribute it and/or modify
@@ -18,19 +19,22 @@
   ~
   -->
 
-<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"--><!--xmlns:app="http://schemas.android.com/apk/res-auto"--><!--xmlns:tools="http://schemas.android.com/tools"--><!--android:layout_width="match_parent"--><!--android:layout_height="match_parent"--><!--android:orientation="vertical"--><!--app:layout_behavior="@string/appbar_scrolling_view_behavior"--><!--tools:showIn="@layout/app_bar_main">-->
-
-
-<!--</LinearLayout>-->
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/content_frame"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:showIn="@layout/app_bar_main">
+    tools:context=".ui.main.activity.HomeActivity">
 
-    <include layout="@layout/home_view"/>
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/NoTittleBarTheme.AppBarOverlay">
 
-</FrameLayout>
+        <include layout="@layout/activity_main_toolbar" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <include layout="@layout/activity_main_content" />
+
+
+</android.support.design.widget.CoordinatorLayout>

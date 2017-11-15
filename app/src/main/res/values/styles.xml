@@ -66,6 +66,13 @@
         <item name="android:textSize">@dimen/profile_name</item>
     </style>
 
+    <style name="PrimaryFlatButton" parent="Theme.AppCompat.Light">
+        <item name="android:buttonStyle">
+            @style/Widget.AppCompat.Button.Borderless.Colored
+        </item>
+        <item name="colorAccent">#FFAB40</item>
+    </style>
+
     <style name="NoTittleBarTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="NoTittleBarTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />

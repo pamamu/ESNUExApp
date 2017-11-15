@@ -18,26 +18,11 @@
  *
  */
 
-package es.pablomacias.esnuex_app.ui.main.activity;
+package es.pablomacias.esnuex_app.data.db;
 
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+/**
+ * Created by pablomaciasmu on 14/11/17.
+ */
 
-import es.pablomacias.esnuex_app.R;
-
-public class ScrollingActivity extends AppCompatActivity {
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-//        TabLayout tabs = (TabLayout) findViewById(R.id.tabs);
-//
-//        tabs.addTab(tabs.newTab().setText("PRUEBA"));
-//        tabs.addTab(tabs.newTab().setText("PRUEBA2"));
-//        tabs.addTab(tabs.newTab().setText("PRUEBA3"));
-
-
-    }
+public class DatabaseCreator {
 }

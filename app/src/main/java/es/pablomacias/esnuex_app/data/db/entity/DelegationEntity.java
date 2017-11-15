@@ -31,13 +31,19 @@ import es.pablomacias.esnuex_app.data.model.Delegation;
  */
 
 @Entity(tableName = "Delegation")
-public class DelegationEntity implements Delegation{
+public class DelegationEntity implements Delegation {
     @PrimaryKey
     private int id;
     @ColumnInfo(name = "nombre")
     private String name;
     @ColumnInfo(name = "ubicacion")
     private String address;
+
+    public DelegationEntity(int id, String name, String address) {
+        this.id = id;
+        this.name = name;
+        this.address = address;
+    }
 
     @Override
     public int getId() {

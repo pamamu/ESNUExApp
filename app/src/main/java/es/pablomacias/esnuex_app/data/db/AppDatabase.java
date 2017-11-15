@@ -25,6 +25,7 @@ import android.arch.persistence.room.RoomDatabase;
 import android.arch.persistence.room.TypeConverters;
 
 import es.pablomacias.esnuex_app.data.db.converter.DateConverter;
+import es.pablomacias.esnuex_app.data.db.converter.UriConverter;
 import es.pablomacias.esnuex_app.data.db.dao.DelegationDao;
 import es.pablomacias.esnuex_app.data.db.dao.EventDao;
 import es.pablomacias.esnuex_app.data.db.dao.NewDao;
@@ -45,7 +46,7 @@ import es.pablomacias.esnuex_app.data.db.entity.TripEntity;
 @Database(entities = {DelegationEntity.class, EventEntity.class, NewEntity.class,
         PartnerEntity.class, PersonEntity.class, TripEntity.class},
         version = 1)
-@TypeConverters(DateConverter.class)
+@TypeConverters({DateConverter.class, UriConverter.class})
 public abstract class AppDatabase extends RoomDatabase {
     static final String DATABASE_NAME = "ESN_UEX";
 

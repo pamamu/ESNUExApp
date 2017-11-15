@@ -62,9 +62,7 @@
                     app:layout_anchor="@id/main_framelayout_title"
                     app:popupTheme="@style/NoTittleBarTheme.PopupOverlay">
 
-                    <include
-                        android:id="@+id/toolbar_info"
-                        layout="@layout/details_header" />
+                    <include layout="@layout/activity_details_header" />
 
                 </android.support.v7.widget.Toolbar>
 
@@ -87,8 +85,7 @@
         app:srcCompat="@drawable/go" />
 
 
-
-    <include layout="@layout/details_footer"/>
+    <include layout="@layout/activity_details_footer" />
 
 
 </android.support.design.widget.CoordinatorLayout>

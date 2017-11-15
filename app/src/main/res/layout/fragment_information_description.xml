@@ -19,28 +19,33 @@
   -->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/main_linearlayout_title"
     android:layout_width="match_parent"
-    android:layout_height="100dp"
+    android:layout_height="0dp"
+    android:layout_weight="3"
+    android:background="@color/esn_dark_blue"
     android:orientation="vertical"
-    android:padding="20dp"
-    app:layout_collapseMode="parallax"
-    app:layout_collapseParallaxMultiplier="0.3">
+    android:paddingTop="10dp">
+
 
     <TextView
-        android:id="@+id/view_title"
-        style="@style/event_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Traffic Light Party" />
+        android:text="@string/description"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="20dp" />
 
-    <TextView
-        android:id="@+id/view_subtitle"
-        style="@style/event_date"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:text="Wednesday Oct 11 - 23:00" />
+        android:layout_height="match_parent">
 
+        <TextView
+            android:textColor="@color/white"
+            android:padding="10dp"
+            android:text="@string/large_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </ScrollView>
 </LinearLayout>

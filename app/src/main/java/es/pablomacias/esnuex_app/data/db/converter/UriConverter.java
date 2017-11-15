@@ -18,26 +18,23 @@
  *
  */
 
-package es.pablomacias.esnuex_app.ui.main.activity;
+package es.pablomacias.esnuex_app.data.db.converter;
 
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.arch.persistence.room.TypeConverter;
+import android.net.Uri;
 
-import es.pablomacias.esnuex_app.R;
+/**
+ * Created by pablomaciasmu on 14/11/17.
+ */
 
-public class ScrollingActivity extends AppCompatActivity {
+public class UriConverter {
+    @TypeConverter
+    public static Uri toUri(String uri) {
+        return uri == null ? null : Uri.parse(uri);
+    }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-//        TabLayout tabs = (TabLayout) findViewById(R.id.tabs);
-//
-//        tabs.addTab(tabs.newTab().setText("PRUEBA"));
-//        tabs.addTab(tabs.newTab().setText("PRUEBA2"));
-//        tabs.addTab(tabs.newTab().setText("PRUEBA3"));
-
-
+    @TypeConverter
+    public static String toString(Uri uri) {
+        return uri == null ? null : uri.toString();
     }
 }
