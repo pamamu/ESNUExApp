@@ -57,8 +57,4 @@ public class DrawerPresenter {
         return list;
     }
 
-    public void onClick(String link) {
-
-    }
-
 }

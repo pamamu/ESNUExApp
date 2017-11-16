@@ -18,26 +18,13 @@
  *
  */
 
-package es.pablomacias.esnuex_app.ui.main.activity;
+package es.pablomacias.esnuex_app.ui.main.fragments;
 
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.Fragment;
 
-import es.pablomacias.esnuex_app.R;
+/**
+ * Created by pablomaciasmu on 16/11/17.
+ */
 
-public class ScrollingActivity extends AppCompatActivity {
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-//        TabLayout tabs = (TabLayout) findViewById(R.id.tabs);
-//
-//        tabs.addTab(tabs.newTab().setText("PRUEBA"));
-//        tabs.addTab(tabs.newTab().setText("PRUEBA2"));
-//        tabs.addTab(tabs.newTab().setText("PRUEBA3"));
-
-
-    }
+public class Detail_Fragment extends Fragment {
 }

@@ -25,6 +25,8 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 import android.net.Uri;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import es.pablomacias.esnuex_app.data.model.Event;
@@ -34,7 +36,7 @@ import es.pablomacias.esnuex_app.data.model.Event;
  */
 
 @Entity(tableName = "Event")
-public class EventEntity implements Event {
+public class EventEntity implements Event, EtcType {
     @PrimaryKey
     private int id;
     @ColumnInfo(name = "nombre")
@@ -82,6 +84,12 @@ public class EventEntity implements Event {
         return delegation;
     }
 
+    @Override
+    public String getSubtitle() {
+        DateFormat df = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+        return df.format(this.dateTime);
+    }
+
     public void setDelegation(int delegation) {
         this.delegation = delegation;
     }
@@ -103,6 +111,7 @@ public class EventEntity implements Event {
     public void setDescription(String description) {
         this.description = description;
     }
+
     @Override
     public Uri getImage() {
         return image;
@@ -110,5 +119,14 @@ public class EventEntity implements Event {
 
     public void setImage(Uri image) {
         this.image = image;
+    }
+
+    public EventEntity(String name, String address, int delegation, Uri image, Date dateTime, String description) {
+        this.name = name;
+        this.address = address;
+        this.delegation = delegation;
+        this.image = image;
+        this.dateTime = dateTime;
+        this.description = description;
     }
 }

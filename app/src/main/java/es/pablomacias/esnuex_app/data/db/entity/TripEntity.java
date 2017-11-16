@@ -25,6 +25,8 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 import android.net.Uri;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import es.pablomacias.esnuex_app.data.model.Trip;
@@ -33,7 +35,7 @@ import es.pablomacias.esnuex_app.data.model.Trip;
  * Created by pablomaciasmu on 13/11/17.
  */
 @Entity(tableName = "Trip")
-public class TripEntity implements Trip {
+public class TripEntity implements Trip, EtcType {
     @PrimaryKey
     private int id;
     @ColumnInfo(name = "nombre")
@@ -63,6 +65,11 @@ public class TripEntity implements Trip {
         return name;
     }
 
+    @Override
+    public String getAddress() {
+        return this.place;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -79,6 +86,12 @@ public class TripEntity implements Trip {
     @Override
     public int getDelegation() {
         return delegation;
+    }
+
+    @Override
+    public String getSubtitle() {
+        DateFormat df = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+        return df.format(this.dateTime);
     }
 
     public void setDelegation(int delegation) {

@@ -22,6 +22,7 @@ package es.pablomacias.esnuex_app.common.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import com.google.gson.Gson;
 
@@ -32,6 +33,7 @@ import es.pablomacias.esnuex_app.common.utils.models.User;
  */
 
 public class UserPreferencesUtil {
+    private static final String TAG = UserPreferencesUtil.class.getName();
     private final Context context;
     private SharedPreferences sharedPreferences;
     private final String SHARED_PREFERENCES_NAME = "sharedpreferences_user";
@@ -61,6 +63,8 @@ public class UserPreferencesUtil {
 
         editorUser.putString(KEY_NAME, jsonUser);
         editorUser.apply();
+
+        Log.i(TAG, "commitUser: " + mUser);
     }
 
     public void clearUser() {

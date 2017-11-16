@@ -18,27 +18,31 @@
  *
  */
 
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
+package es.pablomacias.esnuex_app.ui.main.presenter;
 
-buildscript {
-    repositories {
-        jcenter()
+import android.content.Context;
+
+import es.pablomacias.esnuex_app.common.utils.ReaderUtil;
+import es.pablomacias.esnuex_app.ui.main.fragments.Information_Interface;
+
+/**
+ * Created by pablomaciasmu on 15/11/17.
+ */
+
+public class InformationPresenter {
+
+    private Context context;
+    private final Information_Interface HomeFragment;
+    ReaderUtil readerUtil;
+
+    public InformationPresenter(Context context, Information_Interface homeFragment) {
+        this.context = context;
+        HomeFragment = homeFragment;
+        readerUtil = new ReaderUtil(context);
     }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:3.0.0'
 
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
-        classpath 'com.google.gms:google-services:3.0.0'    }
-}
-
-allprojects {
-    repositories {
-        jcenter()
-        maven { url 'https://maven.google.com' }
+    public void setInformation() {
+        String a = readerUtil.getDescription();
+        HomeFragment.setInformationText(a);
     }
-}
-
-task clean(type: Delete) {
-    delete rootProject.buildDir
 }

@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?><!--
+<?xml version="1.0" encoding="utf-8"?>
+<!--
   ~ Copyright (C) 2017 by Pablo Macias Munoz
   ~ pamaciasm@alumnos.unex.es
   ~ This program is free software; you can redistribute it and/or modify
@@ -18,20 +19,10 @@
   ~
   -->
 
-<resources>
-    <dimen name="TitleText">20sp</dimen>
-    <dimen name="TitleInfo">25sp</dimen>
-    <dimen name="Subtitle">17sp</dimen>
-    <dimen name="body">15sp</dimen>
-    <dimen name="profile_name">17sp</dimen>
-    <!-- Default screen margins, per the Android Design guidelines. -->
-    <dimen name="activity_horizontal_margin">16dp</dimen>
-    <dimen name="activity_vertical_margin">16dp</dimen>
-    <dimen name="nav_header_vertical_spacing">16dp</dimen>
-    <dimen name="nav_header_height">160dp</dimen>
-    <dimen name="fab_margin">16dp</dimen>
-    <dimen name="app_bar_height">250dp</dimen>
-    <dimen name="text_margin">16dp</dimen>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="es.pablomacias.esnuex_app.ui.login.activity.LoginActivity">
 
-    <dimen name="logo_w_h">100dp</dimen>
-</resources>
+</android.support.constraint.ConstraintLayout>

@@ -30,16 +30,7 @@
         <activity
             android:name=".ui.main.activity.HomeActivity"
             android:label="@string/title_home"
-            android:theme="@style/NoTittleBarTheme.NoActionBar">
-
-        </activity>
-        <activity
-            android:name=".ui.main.activity.ScrollingActivity"
-            android:label="@string/title_activity_scrolling"
-            android:theme="@style/NoTittleBarTheme.NoActionBar">
-
-        </activity>
-
+            android:theme="@style/NoTittleBarTheme.NoActionBar" />
         <activity
             android:name=".ui.main.activity.MainActivity"
             android:label="@string/title_home"
@@ -49,6 +40,13 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".ui.login.activity.SignupActivity">
+
+        </activity>
+        <activity android:name=".ui.login.activity.LoginActivity" />
+        <activity android:name=".ui.splash.activity.SplashActivity">
+
         </activity>
     </application>
 

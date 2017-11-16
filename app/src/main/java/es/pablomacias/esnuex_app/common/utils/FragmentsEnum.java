@@ -18,27 +18,20 @@
  *
  */
 
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
+package es.pablomacias.esnuex_app.common.utils;
 
-buildscript {
-    repositories {
-        jcenter()
+/**
+ * Created by pablomaciasmu on 16/11/17.
+ */
+
+public enum FragmentsEnum {
+    EVENT("Events"),
+    PARTNER("Partners"),
+    TRIP("Trips");
+
+    private String name;
+
+    FragmentsEnum(String name) {
+        this.name = name;
     }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:3.0.0'
-
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
-        classpath 'com.google.gms:google-services:3.0.0'    }
-}
-
-allprojects {
-    repositories {
-        jcenter()
-        maven { url 'https://maven.google.com' }
-    }
-}
-
-task clean(type: Delete) {
-    delete rootProject.buildDir
 }

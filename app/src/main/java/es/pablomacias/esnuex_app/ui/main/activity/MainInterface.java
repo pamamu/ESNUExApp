@@ -18,27 +18,18 @@
  *
  */
 
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
+package es.pablomacias.esnuex_app.ui.main.activity;
 
-buildscript {
-    repositories {
-        jcenter()
-    }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:3.0.0'
+import android.support.v4.app.Fragment;
 
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
-        classpath 'com.google.gms:google-services:3.0.0'    }
-}
+/**
+ * Created by pablomaciasmu on 15/11/17.
+ */
 
-allprojects {
-    repositories {
-        jcenter()
-        maven { url 'https://maven.google.com' }
-    }
-}
+public interface MainInterface {
+    void openFragment(Fragment fragment);
 
-task clean(type: Delete) {
-    delete rootProject.buildDir
+    void setTitle(CharSequence title);
+
+    void closeDrawer();
 }

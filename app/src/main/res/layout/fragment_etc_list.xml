@@ -17,9 +17,15 @@
   ~ 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
   ~
   -->
-
-<android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white">
 
-</android.support.v7.widget.RecyclerView>
+    <android.support.v7.widget.RecyclerView android:id="@+id/etc_list"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </android.support.v7.widget.RecyclerView>
+</LinearLayout>

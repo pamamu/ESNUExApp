@@ -18,27 +18,22 @@
  *
  */
 
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
+package es.pablomacias.esnuex_app.data.repository;
 
-buildscript {
-    repositories {
-        jcenter()
-    }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:3.0.0'
+import java.util.List;
 
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
-        classpath 'com.google.gms:google-services:3.0.0'    }
-}
+/**
+ * Created by pablomaciasmu on 16/11/17.
+ */
 
-allprojects {
-    repositories {
-        jcenter()
-        maven { url 'https://maven.google.com' }
-    }
-}
+public interface Repository<T> {
+    List<T> getAll();
 
-task clean(type: Delete) {
-    delete rootProject.buildDir
+    void add(T item);
+
+    void get(int id);
+
+    void update(T item);
+
+    void remove(T item);
 }

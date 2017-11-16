@@ -46,6 +46,12 @@ public class NewEntity implements New {
     @ColumnInfo(name = "fecha")
     private Date date;
 
+    public NewEntity(String title, Uri image, Date date) {
+        this.title = title;
+        this.image = image;
+        this.date = date;
+    }
+
     @Override
     public int getId() {
         return id;

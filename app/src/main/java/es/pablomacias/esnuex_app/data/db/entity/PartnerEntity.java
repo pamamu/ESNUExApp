@@ -32,7 +32,7 @@ import es.pablomacias.esnuex_app.data.model.Partner;
  */
 
 @Entity(tableName = "Partner")
-public class PartnerEntity implements Partner {
+public class PartnerEntity implements Partner, EtcType {
     @PrimaryKey
     private int id;
     @ColumnInfo(name = "nombre")
@@ -96,6 +96,11 @@ public class PartnerEntity implements Partner {
     @Override
     public int getDelegation() {
         return delegation;
+    }
+
+    @Override
+    public String getSubtitle() {
+        return category;
     }
 
     public void setDelegation(int delegation) {
