@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "119041551031",
+    "firebase_url": "https://esnuexapp.firebaseio.com",
+    "project_id": "esnuexapp",
+    "storage_bucket": "esnuexapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:119041551031:android:cbf8735298f124d8",
+        "android_client_info": {
+          "package_name": "es.pablomacias.esnuex_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "119041551031-dl1p3vjil0g9ppnv9t313fsfaicire2u.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "es.pablomacias.esnuex_app",
+            "certificate_hash": "db01cc04b22301d165efbbbe4de4c3cbf7ff9f10"
+          }
+        },
+        {
+          "client_id": "119041551031-0g1l1eoacqgpfskfnlnvubolocoladso.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-uigdQc6hE1JnDaXYnJCClUcSVbXf03g"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "119041551031-0g1l1eoacqgpfskfnlnvubolocoladso.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
