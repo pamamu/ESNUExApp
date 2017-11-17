@@ -35,10 +35,17 @@ import es.pablomacias.esnuex_app.data.db.entity.NewEntity;
 public class DataGenerator {
     public static List<NewEntity> generateNews() {
         List<NewEntity> news = new ArrayList<>();
-        news.add(new NewEntity(1, "AAAAA", Uri.parse("A"), Calendar.getInstance().getTime()));
-        news.add(new NewEntity(2, "BBBBB", Uri.parse("A"), Calendar.getInstance().getTime()));
-        news.add(new NewEntity(3, "CCCCC", Uri.parse("A"), Calendar.getInstance().getTime()));
-        news.add(new NewEntity(4, "DDDDD", Uri.parse("A"), Calendar.getInstance().getTime()));
+        news.add(new NewEntity(1, "Convenio con Servicio Internacional de Evaluación de la Lengua Española (SIELE)", Uri.parse("https://www.esn-spain.org/sites/default/files/styles/zoom/public/news/images/dsc_0139-01.jpg?itok=o8xoxFHO"), Calendar.getInstance().getTime()));
+        news.add(new NewEntity(2, "Unión Europea: Premio Princesa de Asturias de la Concordia 2017😀", Uri.parse("https://www.esn-spain.org/sites/default/files/styles/zoom/public/news/images/26905160536_c9308d391c_q_1.jpg?itok=KI_5SEZc"), Calendar.getInstance().getTime()));
+
+        news.add(new NewEntity(3, "Convenio con Servicio Internacional de Evaluación de la Lengua Española (SIELE)", Uri.parse("https://www.esn-spain.org/sites/default/files/styles/zoom/public/news/images/dsc_0139-01.jpg?itok=o8xoxFHO"), Calendar.getInstance().getTime()));
+        news.add(new NewEntity(4, "Unión Europea: Premio Princesa de Asturias de la Concordia 2017😀", Uri.parse("https://www.esn-spain.org/sites/default/files/styles/zoom/public/news/images/26905160536_c9308d391c_q_1.jpg?itok=KI_5SEZc"), Calendar.getInstance().getTime()));
+
+        news.add(new NewEntity(5, "Convenio con Servicio Internacional de Evaluación de la Lengua Española (SIELE)", Uri.parse("https://www.esn-spain.org/sites/default/files/styles/zoom/public/news/images/dsc_0139-01.jpg?itok=o8xoxFHO"), Calendar.getInstance().getTime()));
+        news.add(new NewEntity(6, "Unión Europea: Premio Princesa de Asturias de la Concordia 2017😀", Uri.parse("https://www.esn-spain.org/sites/default/files/styles/zoom/public/news/images/26905160536_c9308d391c_q_1.jpg?itok=KI_5SEZc"), Calendar.getInstance().getTime()));
+
+        news.add(new NewEntity(7, "Convenio con Servicio Internacional de Evaluación de la Lengua Española (SIELE)", Uri.parse("https://www.esn-spain.org/sites/default/files/styles/zoom/public/news/images/dsc_0139-01.jpg?itok=o8xoxFHO"), Calendar.getInstance().getTime()));
+        news.add(new NewEntity(8, "Unión Europea: Premio Princesa de Asturias de la Concordia 2017😀", Uri.parse("https://www.esn-spain.org/sites/default/files/styles/zoom/public/news/images/26905160536_c9308d391c_q_1.jpg?itok=KI_5SEZc"), Calendar.getInstance().getTime()));
 
 
         return news;

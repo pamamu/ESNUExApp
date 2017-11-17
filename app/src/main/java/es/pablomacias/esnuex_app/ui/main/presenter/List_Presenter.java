@@ -28,4 +28,5 @@ import android.content.Context;
 
 public class List_Presenter {
     private Context context;
+
 }

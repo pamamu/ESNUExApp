@@ -24,6 +24,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,7 +59,7 @@ public class MenuLinkAdapter extends ArrayAdapter<Link> {
         LayoutInflater layoutInflater = ((Activity) context).getLayoutInflater();
 
         View v = layoutInflater.inflate(layoutResourceId, parent, false);
-
+        Log.i("LINK", "getView: " + list.get(position).getName());
         ImageView imageView = v.findViewById(R.id.drawer_list_item_image);
         TextView textView = v.findViewById(R.id.drawer_list_item_text);
 

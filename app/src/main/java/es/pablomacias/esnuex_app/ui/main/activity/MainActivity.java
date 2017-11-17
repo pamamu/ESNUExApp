@@ -27,7 +27,10 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
@@ -51,6 +54,9 @@ public class MainActivity extends BaseActivity implements MainInterface {
 
     @BindView(R.id.drawer_list)
     ListView listView;
+
+    @BindView(R.id.main_content_frame)
+    ViewGroup viewGroup;
 
     DrawerPresenter drawerPresenter;
     MainPresenter mainPresenter;
@@ -81,10 +87,23 @@ public class MainActivity extends BaseActivity implements MainInterface {
                 mainPresenter.onLinkClick(i);
             }
         });
+    }
 
-        if (savedInstanceState == null) {
-            openFragment(new Home_Fragment());
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_activity, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.action_logout) {
+            mainPresenter.logout();
         }
+
+        return super.onOptionsItemSelected(item);
     }
 
     public void openFragment(Fragment fragment) {
@@ -121,7 +140,9 @@ public class MainActivity extends BaseActivity implements MainInterface {
         drawer.closeDrawers();
         menuLinkAdapter = new MenuLinkAdapter(this, R.layout.drawer_list_item, drawerPresenter.getLinks());
         listView.setAdapter(menuLinkAdapter);
+        setTitle(getString(R.string.app_name));
         openFragment(new Home_Fragment());
+        viewGroup.invalidate();
     }
 
 

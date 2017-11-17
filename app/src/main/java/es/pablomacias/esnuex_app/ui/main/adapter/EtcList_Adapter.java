@@ -37,6 +37,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import es.pablomacias.esnuex_app.R;
 import es.pablomacias.esnuex_app.data.db.entity.EtcType;
+import es.pablomacias.esnuex_app.ui.main.activity.Etc_Item_Listener;
 
 /**
  * Created by pablomaciasmu on 16/11/17.
@@ -47,6 +48,7 @@ public class EtcList_Adapter extends RecyclerView.Adapter<EtcList_Adapter.EtcVie
     private static final String TAG = EtcList_Adapter.class.getName();
     private List<EtcType> objets;
     Context context;
+    Etc_Item_Listener listener;
 
 
     @Override
@@ -56,9 +58,16 @@ public class EtcList_Adapter extends RecyclerView.Adapter<EtcList_Adapter.EtcVie
     }
 
     @Override
-    public void onBindViewHolder(EtcViewHolder holder, int position) {
+    public void onBindViewHolder(EtcViewHolder holder, final int position) {
         holder.title.setText(objets.get(position).getName());
         holder.subtitle.setText(objets.get(position).getSubtitle());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.i(TAG, "onClick: " + position);
+                listener.itemclicked(objets.get(position));
+            }
+        });
         ImageView imageView = holder.image;
         Picasso
                 .with(context)
@@ -90,9 +99,10 @@ public class EtcList_Adapter extends RecyclerView.Adapter<EtcList_Adapter.EtcVie
         }
     }
 
-    public EtcList_Adapter(List<EtcType> objets, Context context) {
+    public EtcList_Adapter(List<EtcType> objets, Context context, Etc_Item_Listener listener) {
         this.objets = objets;
         this.context = context;
+        this.listener = listener;
         Log.i(TAG, "EtcList_Adapter: " + objets.size());
     }
 }

@@ -23,7 +23,6 @@ package es.pablomacias.esnuex_app.ui.main.presenter;
 import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.util.Log;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -33,8 +32,8 @@ import es.pablomacias.esnuex_app.common.utils.models.Link;
 import es.pablomacias.esnuex_app.ui.drawer.presenter.DrawerPresenter;
 import es.pablomacias.esnuex_app.ui.main.activity.MainInterface;
 import es.pablomacias.esnuex_app.ui.main.fragments.Information_Fragment;
-import es.pablomacias.esnuex_app.ui.main.fragments.List_Fragment;
 import es.pablomacias.esnuex_app.ui.main.fragments.Management_Fragment;
+import es.pablomacias.esnuex_app.ui.main.fragments.TabFragment;
 
 /**
  * Created by pablomaciasmu on 15/11/17.
@@ -59,40 +58,49 @@ public class MainPresenter {
     public void onLinkClick(int pos) {
         Link link_pressed = links.get(pos);
         Fragment fragment = null;
-        mainInterface.setTitle(link_pressed.getName());
         Log.i(TAG, "onLinkClick: ITEM" + pos);
-        Toast toast = Toast.makeText(context, link_pressed.getName(), Toast.LENGTH_SHORT);
-        toast.show();
         switch (pos) {
             case 0: //ESN UEX
                 fragment = new Information_Fragment();
+                mainInterface.setTitle(link_pressed.getName());
                 break;
             case 1: //Events
-                fragment = List_Fragment.newInstance(FragmentsEnum.EVENT);
+                fragment = TabFragment.newInstance(FragmentsEnum.EVENT);
+//                fragment = List_Fragment.newInstance(FragmentsEnum.EVENT, 0);
+                mainInterface.setTitle(link_pressed.getName());
                 break;
             case 2: //Trips
-                fragment = List_Fragment.newInstance(FragmentsEnum.TRIP);
+                fragment = TabFragment.newInstance(FragmentsEnum.TRIP);
+//                fragment = List_Fragment.newInstance(FragmentsEnum.TRIP, 0);
+                mainInterface.setTitle(link_pressed.getName());
                 break;
             case 3: //Partners
-                fragment = List_Fragment.newInstance(FragmentsEnum.PARTNER);
+                fragment = TabFragment.newInstance(FragmentsEnum.PARTNER);
+//                fragment = List_Fragment.newInstance(FragmentsEnum.PARTNER, 0);
+                mainInterface.setTitle(link_pressed.getName());
                 break;
             case 4: //Contact
                 return;
             case 5:
-                if (link_pressed.isProtect()) { //Management
+                if (userPreferencesUtil.getUser() != null) { //Management
                     fragment = new Management_Fragment();
+                    mainInterface.setTitle(link_pressed.getName());
                 } else { //Sign in
                     mainInterface.openSignUpActivity();
                     return;
                 }
                 break;
             case 6:
-                userPreferencesUtil.clearUser();
-                mainInterface.updateUI();
+                logout();
                 return;
         }
         mainInterface.openFragment(fragment);
         mainInterface.closeDrawer();
+    }
+
+    public void logout() {
+        userPreferencesUtil.clearUser();
+        mainInterface.updateUI();
     }
 
 

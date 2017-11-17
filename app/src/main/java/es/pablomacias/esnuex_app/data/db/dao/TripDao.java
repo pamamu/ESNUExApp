@@ -46,4 +46,7 @@ public interface TripDao {
 
     @Delete
     void delete(TripEntity tripEntity);
+
+    @Query("DELETE FROM Trip")
+    void truncateTable();
 }

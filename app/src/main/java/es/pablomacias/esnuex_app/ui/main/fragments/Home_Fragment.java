@@ -24,15 +24,18 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import es.pablomacias.esnuex_app.R;
+import es.pablomacias.esnuex_app.ui.main.activity.MainActivity;
 import es.pablomacias.esnuex_app.ui.main.adapter.NewsList_Adapter;
 import es.pablomacias.esnuex_app.ui.main.presenter.Home_Presenter;
 
@@ -41,7 +44,12 @@ import es.pablomacias.esnuex_app.ui.main.presenter.Home_Presenter;
  */
 
 public class Home_Fragment extends Fragment implements Home_Interface {
-
+    @BindView(R.id.information_buttom)
+    LinearLayout information;
+    @BindView(R.id.trips_button)
+    LinearLayout trips;
+    @BindView(R.id.events_button)
+    LinearLayout events;
     @BindView(R.id.news_list)
     RecyclerView newList;
     RecyclerView.LayoutManager manager;
@@ -76,7 +84,19 @@ public class Home_Fragment extends Fragment implements Home_Interface {
         adapter = new NewsList_Adapter(home_presenter.getNews(), getContext());
         newList.setAdapter(adapter);
 
+
+        information.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentTransaction ft = getFragmentManager().beginTransaction();
+                ((MainActivity) getActivity()).getSupportActionBar().setTitle(R.string.information);
+                ft.replace(R.id.main_content_frame, new Information_Fragment());
+                ft.commit();
+            }
+        });
+
         return view;
+
     }
 
 }

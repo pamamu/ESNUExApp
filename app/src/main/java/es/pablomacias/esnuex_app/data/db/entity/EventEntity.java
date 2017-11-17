@@ -132,4 +132,5 @@ public class EventEntity implements Event, EtcType {
         this.dateTime = dateTime;
         this.description = description;
     }
+
 }

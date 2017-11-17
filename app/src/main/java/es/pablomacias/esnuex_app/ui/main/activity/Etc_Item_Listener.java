@@ -18,21 +18,14 @@
  *
  */
 
-package es.pablomacias.esnuex_app.data.db.dao;
+package es.pablomacias.esnuex_app.ui.main.activity;
 
-import android.arch.persistence.room.Dao;
-import android.arch.persistence.room.Query;
-
-import java.util.List;
-
-import es.pablomacias.esnuex_app.data.db.entity.PartnerEntity;
+import es.pablomacias.esnuex_app.data.db.entity.EtcType;
 
 /**
- * Created by pablomaciasmu on 13/11/17.
+ * Created by pablomaciasmu on 17/11/17.
  */
-@Dao
-public interface PartnerDao {
-    @Query("SELECT * FROM Partner where delegacion = :delegation")
-    List<PartnerEntity> loadAllsByDelegation(int delegation);
 
+public interface Etc_Item_Listener {
+    void itemclicked(EtcType item);
 }

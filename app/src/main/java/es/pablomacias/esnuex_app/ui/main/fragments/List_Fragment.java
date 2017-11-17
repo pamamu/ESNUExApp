@@ -20,6 +20,8 @@
 
 package es.pablomacias.esnuex_app.ui.main.fragments;
 
+import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -41,13 +43,16 @@ import es.pablomacias.esnuex_app.R;
 import es.pablomacias.esnuex_app.common.utils.FragmentsEnum;
 import es.pablomacias.esnuex_app.data.db.entity.EtcType;
 import es.pablomacias.esnuex_app.data.db.entity.EventEntity;
+import es.pablomacias.esnuex_app.ui.detail.activity.DetailActivity;
+import es.pablomacias.esnuex_app.ui.main.activity.Etc_Item_Listener;
 import es.pablomacias.esnuex_app.ui.main.adapter.EtcList_Adapter;
+import es.pablomacias.esnuex_app.ui.main.presenter.List_Presenter;
 
 /**
  * Created by pablomaciasmu on 16/11/17.
  */
 
-public class List_Fragment extends Fragment {
+public class List_Fragment extends Fragment implements Etc_Item_Listener {
     private static final String TAG = List_Fragment.class.getName();
 
     @BindView(R.id.etc_list)
@@ -56,17 +61,28 @@ public class List_Fragment extends Fragment {
     RecyclerView.LayoutManager manager;
     private EtcList_Adapter adapter;
     private static final String fragmentType = "textForView";
+    private static final String fragmentDelegation = "delegation";
     private String type;
+    private int delegation;
+    private Context context;
+    private List_Presenter listPresenter;
 
     public List_Fragment() {
     }
 
-    public static List_Fragment newInstance(FragmentsEnum fragmentsEnum) {
+    public static List_Fragment newInstance(FragmentsEnum fragmentsEnum, int delegation) {
         Bundle data = new Bundle();
         data.putString(fragmentType, fragmentsEnum.name());
+        data.putInt(fragmentDelegation, delegation);
         List_Fragment list_fragment = new List_Fragment();
         list_fragment.setArguments(data);
         return list_fragment;
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        this.context = context;
     }
 
     @Override
@@ -76,6 +92,7 @@ public class List_Fragment extends Fragment {
         if (bundle != null) {
             Log.i(TAG, "onCreate: " + bundle.getString(fragmentType));
             this.type = bundle.getString(fragmentType);
+            this.delegation = bundle.getInt(fragmentDelegation);
         }
     }
 
@@ -84,6 +101,8 @@ public class List_Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_etc_list, container, false);
         ButterKnife.bind(this, view);
+
+        //List<EtcType> elements =
 
         List<EtcType> elements = new ArrayList<>();
         elements.add(new EventEntity("Evento 1", "Calle los Perdigones", 1,
@@ -101,9 +120,22 @@ public class List_Fragment extends Fragment {
         item_list.setHasFixedSize(true);
         manager = new LinearLayoutManager(getContext());
         item_list.setLayoutManager(manager);
-        adapter = new EtcList_Adapter(elements, getContext());
+        adapter = new EtcList_Adapter(elements, getContext(), this);
         item_list.setAdapter(adapter);
 
+
         return view;
+    }
+
+    @Override
+    public void itemclicked(EtcType item) {
+        Log.i(TAG, "itemclicked: ");
+        Intent intent = new Intent(context, DetailActivity.class);
+        String information[] = {
+                item.getImage().toString(),
+                item.getName(), item.getSubtitle(),
+                item.getDescription(), item.getAddress()};
+        intent.putExtra("information", information);
+        startActivity(intent);
     }
 }
