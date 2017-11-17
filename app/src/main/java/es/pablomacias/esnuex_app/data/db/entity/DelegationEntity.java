@@ -39,6 +39,9 @@ public class DelegationEntity implements Delegation {
     @ColumnInfo(name = "ubicacion")
     private String address;
 
+    public DelegationEntity() {
+    }
+
     public DelegationEntity(int id, String name, String address) {
         this.id = id;
         this.name = name;

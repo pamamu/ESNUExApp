@@ -28,11 +28,13 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import es.pablomacias.esnuex_app.common.utils.FragmentsEnum;
+import es.pablomacias.esnuex_app.common.utils.UserPreferencesUtil;
 import es.pablomacias.esnuex_app.common.utils.models.Link;
 import es.pablomacias.esnuex_app.ui.drawer.presenter.DrawerPresenter;
 import es.pablomacias.esnuex_app.ui.main.activity.MainInterface;
 import es.pablomacias.esnuex_app.ui.main.fragments.Information_Fragment;
 import es.pablomacias.esnuex_app.ui.main.fragments.List_Fragment;
+import es.pablomacias.esnuex_app.ui.main.fragments.Management_Fragment;
 
 /**
  * Created by pablomaciasmu on 15/11/17.
@@ -44,12 +46,14 @@ public class MainPresenter {
     private final MainInterface mainInterface;
     private ArrayList<Link> links;
     private final String TAG = this.getClass().getSimpleName();
+    UserPreferencesUtil userPreferencesUtil;
 
     public MainPresenter(Context context, DrawerPresenter drawerPresenter, MainInterface mainInterface) {
         this.mainInterface = mainInterface;
         this.context = context;
         this.drawerPresenter = drawerPresenter;
         links = drawerPresenter.getLinks();
+        userPreferencesUtil = new UserPreferencesUtil(context);
     }
 
     public void onLinkClick(int pos) {
@@ -64,7 +68,7 @@ public class MainPresenter {
                 fragment = new Information_Fragment();
                 break;
             case 1: //Events
-                fragment = new List_Fragment();
+                fragment = List_Fragment.newInstance(FragmentsEnum.EVENT);
                 break;
             case 2: //Trips
                 fragment = List_Fragment.newInstance(FragmentsEnum.TRIP);
@@ -73,19 +77,22 @@ public class MainPresenter {
                 fragment = List_Fragment.newInstance(FragmentsEnum.PARTNER);
                 break;
             case 4: //Contact
-                break;
+                return;
             case 5:
                 if (link_pressed.isProtect()) { //Management
-
+                    fragment = new Management_Fragment();
                 } else { //Sign in
-
+                    mainInterface.openSignUpActivity();
+                    return;
                 }
                 break;
-
+            case 6:
+                userPreferencesUtil.clearUser();
+                mainInterface.updateUI();
+                return;
         }
         mainInterface.openFragment(fragment);
         mainInterface.closeDrawer();
-
     }
 
 

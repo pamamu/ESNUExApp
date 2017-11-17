@@ -53,7 +53,7 @@ public class DrawerPresenter {
             }
             return filteredList;
         }
-        list.remove(list.size() - 1);
+        list.remove(list.size() - 2);
         return list;
     }
 

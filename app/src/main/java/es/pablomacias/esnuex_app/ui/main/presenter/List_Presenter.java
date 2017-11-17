@@ -18,22 +18,14 @@
  *
  */
 
-package es.pablomacias.esnuex_app.ui.main.activity;
+package es.pablomacias.esnuex_app.ui.main.presenter;
 
-import android.support.v4.app.Fragment;
+import android.content.Context;
 
 /**
- * Created by pablomaciasmu on 15/11/17.
+ * Created by pablomaciasmu on 17/11/17.
  */
 
-public interface MainInterface {
-    void openFragment(Fragment fragment);
-
-    void setTitle(CharSequence title);
-
-    void closeDrawer();
-
-    void openSignUpActivity();
-
-    void updateUI();
+public class List_Presenter {
+    private Context context;
 }

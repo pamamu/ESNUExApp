@@ -52,7 +52,7 @@ public class LinkPreferencesUtil {
         if (mLinks == null || mLinks.isEmpty()) {
             mLinks = getLinksFromMemory();
         }
-        return mLinks;
+        return new ArrayList<>(mLinks);
     }
 
     private ArrayList<Link> getLinksFromMemory() {
@@ -66,6 +66,7 @@ public class LinkPreferencesUtil {
             mLinks.add(new Link(context.getString(R.string.contact), R.drawable.contact, false));
             mLinks.add(new Link(context.getString(R.string.management), R.drawable.management, true));
             mLinks.add(new Link(context.getString(R.string.login), R.drawable.signinup, false));
+            mLinks.add(new Link(context.getString(R.string.logout), R.drawable.log_out, true));
         }
         return mLinks;
     }

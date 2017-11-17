@@ -21,8 +21,10 @@
 package es.pablomacias.esnuex_app.data.db;
 
 import android.arch.persistence.room.Database;
+import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
 import android.arch.persistence.room.TypeConverters;
+import android.content.Context;
 
 import es.pablomacias.esnuex_app.data.db.converter.DateConverter;
 import es.pablomacias.esnuex_app.data.db.converter.UriConverter;
@@ -46,6 +48,19 @@ import es.pablomacias.esnuex_app.data.db.entity.TripEntity;
         version = 1)
 @TypeConverters({DateConverter.class, UriConverter.class})
 public abstract class AppDatabase extends RoomDatabase {
+    private static AppDatabase INSTANCE;
+
+    public static AppDatabase getAppDatabase(final Context context) {
+        if (INSTANCE == null) {
+            synchronized (AppDatabase.class) {
+                if (INSTANCE == null)
+                    INSTANCE = Room.databaseBuilder(context.getApplicationContext(), AppDatabase.class, DATABASE_NAME)
+                            .allowMainThreadQueries().build();
+            }
+        }
+        return INSTANCE;
+    }
+
     static final String DATABASE_NAME = "ESN_UEX";
 
     public abstract DelegationDao delegationDao();

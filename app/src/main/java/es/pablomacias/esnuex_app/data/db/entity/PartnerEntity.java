@@ -48,6 +48,19 @@ public class PartnerEntity implements Partner, EtcType {
     @ColumnInfo(name = "imagen")
     private Uri image;
 
+    public PartnerEntity() {
+    }
+
+    public PartnerEntity(int id, String name, String category, String description, String address, int delegation, Uri image) {
+        this.id = id;
+        this.name = name;
+        this.category = category;
+        this.description = description;
+        this.address = address;
+        this.delegation = delegation;
+        this.image = image;
+    }
+
     @Override
     public int getId() {
         return id;

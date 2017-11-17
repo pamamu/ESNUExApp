@@ -21,6 +21,8 @@
 package es.pablomacias.esnuex_app.data.db.dao;
 
 import android.arch.persistence.room.Dao;
+import android.arch.persistence.room.Insert;
+import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Query;
 
 import java.util.List;
@@ -34,5 +36,14 @@ import es.pablomacias.esnuex_app.data.db.entity.NewEntity;
 public interface NewDao {
     @Query("SELECT * FROM New")
     List<NewEntity> loadAllsNews();
+
+    @Query("DELETE FROM New")
+    void truncateTable();
+
+    @Insert
+    void insertAll(List<NewEntity> newEntities);
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void insert(NewEntity newEntity);
 
 }

@@ -29,6 +29,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 import butterknife.BindView;
@@ -57,6 +59,15 @@ public class EtcList_Adapter extends RecyclerView.Adapter<EtcList_Adapter.EtcVie
     public void onBindViewHolder(EtcViewHolder holder, int position) {
         holder.title.setText(objets.get(position).getName());
         holder.subtitle.setText(objets.get(position).getSubtitle());
+        ImageView imageView = holder.image;
+        Picasso
+                .with(context)
+                .load(objets.get(position).getImage())
+                .fit().centerCrop() // will explain later
+                .placeholder(R.drawable.loading_image)
+                .error(R.drawable.event_ticket)
+                .noFade()
+                .into(imageView);
 //        Picasso.with(context).load(objets.get(position).getImage()).centerCrop().into(holder.image);
     }
 

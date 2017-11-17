@@ -52,6 +52,9 @@ public class EventEntity implements Event, EtcType {
     @ColumnInfo(name = "descripcion")
     private String description;
 
+    public EventEntity() {
+    }
+
     @Override
     public int getId() {
         return id;

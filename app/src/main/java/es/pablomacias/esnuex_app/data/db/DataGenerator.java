@@ -20,9 +20,29 @@
 
 package es.pablomacias.esnuex_app.data.db;
 
+import android.net.Uri;
+
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+
+import es.pablomacias.esnuex_app.data.db.entity.NewEntity;
+
 /**
  * Created by pablomaciasmu on 14/11/17.
  */
 
-public class DatabaseCreator {
+public class DataGenerator {
+    public static List<NewEntity> generateNews() {
+        List<NewEntity> news = new ArrayList<>();
+        news.add(new NewEntity(1, "AAAAA", Uri.parse("A"), Calendar.getInstance().getTime()));
+        news.add(new NewEntity(2, "BBBBB", Uri.parse("A"), Calendar.getInstance().getTime()));
+        news.add(new NewEntity(3, "CCCCC", Uri.parse("A"), Calendar.getInstance().getTime()));
+        news.add(new NewEntity(4, "DDDDD", Uri.parse("A"), Calendar.getInstance().getTime()));
+
+
+        return news;
+    }
+
+
 }

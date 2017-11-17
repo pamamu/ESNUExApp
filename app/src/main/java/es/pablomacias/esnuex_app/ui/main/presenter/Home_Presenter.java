@@ -21,6 +21,15 @@
 package es.pablomacias.esnuex_app.ui.main.presenter;
 
 import android.content.Context;
+import android.util.Log;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import es.pablomacias.esnuex_app.data.db.AppDatabase;
+import es.pablomacias.esnuex_app.data.db.entity.NewEntity;
+import es.pablomacias.esnuex_app.data.repository.NewRespository;
+import es.pablomacias.esnuex_app.ui.main.fragments.Home_Interface;
 
 /**
  * Created by pablomaciasmu on 16/11/17.
@@ -28,6 +37,22 @@ import android.content.Context;
 
 public class Home_Presenter {
     private Context context;
+    private ArrayList<NewEntity> newEntities;
+    private final String TAG = this.getClass().getSimpleName();
+    private Home_Interface home_interface;
+    private NewRespository newRespository;
+
+    public Home_Presenter(Context context, Home_Interface home_interface) {
+        Log.i(TAG, "Home_Presenter: context = " + context);
+        this.context = context;
+        this.home_interface = home_interface;
+        newEntities = new ArrayList<>();
+        newRespository = NewRespository.getInstance(AppDatabase.getAppDatabase(context));
+    }
+
+    public List<NewEntity> getNews() {
+        return newRespository.getAll();
+    }
 
 
 }

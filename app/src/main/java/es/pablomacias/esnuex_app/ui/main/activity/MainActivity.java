@@ -20,6 +20,7 @@
 
 package es.pablomacias.esnuex_app.ui.main.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -35,10 +36,13 @@ import es.pablomacias.esnuex_app.R;
 import es.pablomacias.esnuex_app.common.BaseActivity;
 import es.pablomacias.esnuex_app.ui.drawer.adapter.MenuLinkAdapter;
 import es.pablomacias.esnuex_app.ui.drawer.presenter.DrawerPresenter;
+import es.pablomacias.esnuex_app.ui.login.activity.SignupActivity;
 import es.pablomacias.esnuex_app.ui.main.fragments.Home_Fragment;
 import es.pablomacias.esnuex_app.ui.main.presenter.MainPresenter;
 
 public class MainActivity extends BaseActivity implements MainInterface {
+    private static final String TAG = MainActivity.class.getName();
+
     @BindView(R.id.toolbar_drawer)
     Toolbar toolbar;
 
@@ -66,9 +70,9 @@ public class MainActivity extends BaseActivity implements MainInterface {
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        menuLinkAdapter = new MenuLinkAdapter(this, R.layout.drawer_list_item, drawerPresenter.getLinks());
-
-        listView.setAdapter(menuLinkAdapter);
+        updateUI();
+        //-------------------
+        //-------------------
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -84,8 +88,17 @@ public class MainActivity extends BaseActivity implements MainInterface {
     }
 
     public void openFragment(Fragment fragment) {
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction().addToBackStack(null);// begin  FragmentTransaction
-        ft.add(R.id.main_content_frame, fragment);
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.main_content_frame, fragment);
+        ft.commit();
+    }
+
+    @Override
+    public void onBackPressed() {
+        drawer.closeDrawers();
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        setTitle(getString(R.string.app_name));
+        ft.replace(R.id.main_content_frame, new Home_Fragment()).addToBackStack(null);
         ft.commit();
     }
 
@@ -97,6 +110,20 @@ public class MainActivity extends BaseActivity implements MainInterface {
     public void closeDrawer() {
         drawer.closeDrawers();
     }
+
+    @Override
+    public void openSignUpActivity() {
+        startActivity(new Intent(MainActivity.this, SignupActivity.class));
+    }
+
+
+    public void updateUI() {
+        drawer.closeDrawers();
+        menuLinkAdapter = new MenuLinkAdapter(this, R.layout.drawer_list_item, drawerPresenter.getLinks());
+        listView.setAdapter(menuLinkAdapter);
+        openFragment(new Home_Fragment());
+    }
+
 
     @Override
     public int getLayoutId() {

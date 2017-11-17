@@ -79,6 +79,7 @@
                         android:orientation="vertical">
 
                         <ImageView
+                            android:id="@+id/add_but1"
                             android:layout_width="30dp"
                             android:layout_height="30dp"
                             android:layout_gravity="center"
@@ -102,6 +103,7 @@
                         android:orientation="vertical">
 
                         <ImageView
+                            android:id="@+id/edit_but1"
                             android:layout_width="30dp"
                             android:layout_height="30dp"
                             android:layout_gravity="center"
@@ -125,6 +127,7 @@
                         android:orientation="vertical">
 
                         <ImageView
+                            android:id="@+id/remove_but1"
                             android:layout_width="30dp"
                             android:layout_height="30dp"
                             android:layout_gravity="center"
@@ -198,6 +201,7 @@
                         android:orientation="vertical">
 
                         <ImageView
+                            android:id="@+id/add_but2"
                             android:layout_width="30dp"
                             android:layout_height="30dp"
                             android:layout_gravity="center"
@@ -221,6 +225,7 @@
                         android:orientation="vertical">
 
                         <ImageView
+                            android:id="@+id/edit_but2"
                             android:layout_width="30dp"
                             android:layout_height="30dp"
                             android:layout_gravity="center"
@@ -244,6 +249,7 @@
                         android:orientation="vertical">
 
                         <ImageView
+                            android:id="@+id/remove_but2"
                             android:layout_width="30dp"
                             android:layout_height="30dp"
                             android:layout_gravity="center"

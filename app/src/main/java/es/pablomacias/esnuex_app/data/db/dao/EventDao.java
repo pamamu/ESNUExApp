@@ -41,6 +41,9 @@ public interface EventDao {
     @Insert
     void insert(EventEntity eventEntity);
 
+    @Query("DELETE FROM Event")
+    void truncateTable();
+
     @Update
     void update(EventEntity eventEntity);
 

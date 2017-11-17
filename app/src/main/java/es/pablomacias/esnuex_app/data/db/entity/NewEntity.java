@@ -37,14 +37,24 @@ import es.pablomacias.esnuex_app.data.model.New;
 public class NewEntity implements New {
     @PrimaryKey
     private int id;
-    @ColumnInfo(name = "titulo")
+    @ColumnInfo(name = "title")
     private String title;
-    @ColumnInfo(name = "cuerpo")
+    @ColumnInfo(name = "body")
     private String body;
-    @ColumnInfo(name = "imagen")
+    @ColumnInfo(name = "image")
     private Uri image;
-    @ColumnInfo(name = "fecha")
+    @ColumnInfo(name = "date")
     private Date date;
+
+    public NewEntity() {
+    }
+
+    public NewEntity(int id, String title, Uri image, Date date) {
+        this.id = id;
+        this.title = title;
+        this.image = image;
+        this.date = date;
+    }
 
     public NewEntity(String title, Uri image, Date date) {
         this.title = title;

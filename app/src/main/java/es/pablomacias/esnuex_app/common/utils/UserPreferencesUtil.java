@@ -22,8 +22,11 @@ package es.pablomacias.esnuex_app.common.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.util.Log;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.gson.Gson;
 
 import es.pablomacias.esnuex_app.common.utils.models.User;
@@ -65,6 +68,19 @@ public class UserPreferencesUtil {
         editorUser.apply();
 
         Log.i(TAG, "commitUser: " + mUser);
+    }
+
+    public void updateUser() {
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = firebaseAuth.getCurrentUser();
+        if (currentUser != null) {
+            User user = new User();
+            user.setEmail(currentUser.getEmail());
+            user.setName(currentUser.getDisplayName());
+            if (!Uri.EMPTY.equals(currentUser.getPhotoUrl()))
+                user.setPhoto(currentUser.getPhotoUrl().toString());
+            commitUser(user);
+        }
     }
 
     public void clearUser() {

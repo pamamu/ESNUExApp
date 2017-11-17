@@ -51,6 +51,19 @@ public class TripEntity implements Trip, EtcType {
     @ColumnInfo(name = "descripcion")
     private String description;
 
+    public TripEntity() {
+    }
+
+    public TripEntity(int id, String name, String place, int delegation, Uri image, Date dateTime, String description) {
+        this.id = id;
+        this.name = name;
+        this.place = place;
+        this.delegation = delegation;
+        this.image = image;
+        this.dateTime = dateTime;
+        this.description = description;
+    }
+
     @Override
     public int getId() {
         return id;

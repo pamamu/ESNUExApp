@@ -18,18 +18,12 @@
  *
  */
 
-package es.pablomacias.esnuex_app.ui.login.activity;
+package es.pablomacias.esnuex_app.ui.main.fragments;
 
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+/**
+ * Created by pablomaciasmu on 17/11/17.
+ */
 
-import es.pablomacias.esnuex_app.R;
+public interface Home_Interface {
 
-public class LoginActivity extends AppCompatActivity {
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-    }
 }

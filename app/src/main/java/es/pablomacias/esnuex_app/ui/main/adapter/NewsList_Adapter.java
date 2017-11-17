@@ -20,12 +20,15 @@
 
 package es.pablomacias.esnuex_app.ui.main.adapter;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -42,6 +45,7 @@ import es.pablomacias.esnuex_app.data.db.entity.NewEntity;
 
 public class NewsList_Adapter extends RecyclerView.Adapter<NewsList_Adapter.NewViewHolder> {
     private List<NewEntity> news;
+    Context context;
 
     @Override
     public NewViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -54,7 +58,15 @@ public class NewsList_Adapter extends RecyclerView.Adapter<NewsList_Adapter.NewV
         holder.title.setText(news.get(position).getTitle());
         DateFormat df = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
         holder.time.setText(df.format(news.get(position).getDate()));
-        holder.image.setImageResource(R.drawable.bus);
+        ImageView imageView = holder.image;
+        Picasso
+                .with(context)
+                .load(news.get(position).getImage())
+                .fit().centerCrop() // will explain later
+                .placeholder(R.drawable.loading_image)
+                .error(R.drawable.esn_uex_color)
+                .noFade()
+                .into(imageView);
     }
 
     @Override
@@ -77,7 +89,8 @@ public class NewsList_Adapter extends RecyclerView.Adapter<NewsList_Adapter.NewV
         }
     }
 
-    public NewsList_Adapter(List<NewEntity> news) {
+    public NewsList_Adapter(List<NewEntity> news, Context context) {
+        this.context = context;
         this.news = news;
     }
 }
