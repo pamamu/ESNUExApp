@@ -40,7 +40,7 @@ public class NewRespository implements Repository<NewEntity> {
     }
 
     private void initRepository() {
-        appDatabase.newDao().truncateTable();
+//        appDatabase.newDao().truncateTable();
         appDatabase.newDao().insertAll(DataGenerator.generateNews());
     }
 

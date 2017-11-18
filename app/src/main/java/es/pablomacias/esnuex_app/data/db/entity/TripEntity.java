@@ -25,6 +25,8 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 import android.net.Uri;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -39,16 +41,22 @@ public class TripEntity implements Trip, EtcType {
     @PrimaryKey
     private int id;
     @ColumnInfo(name = "nombre")
+    @SerializedName("nombre")
     private String name;
     @ColumnInfo(name = "ubicacion")
+    @SerializedName("ubicacion")
     private String place;
     @ColumnInfo(name = "delegacion")
+    @SerializedName("delegacion")
     private int delegation;
     @ColumnInfo(name = "imagen")
+    @SerializedName("imagen")
     private Uri image;
     @ColumnInfo(name = "fecha")
+    @SerializedName("fecha")
     private Date dateTime;
     @ColumnInfo(name = "descripcion")
+    @SerializedName("descripcion")
     private String description;
 
     public TripEntity() {

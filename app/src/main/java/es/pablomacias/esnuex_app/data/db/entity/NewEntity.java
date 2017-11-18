@@ -25,6 +25,8 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 import android.net.Uri;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.Date;
 
 import es.pablomacias.esnuex_app.data.model.New;
@@ -38,11 +40,15 @@ public class NewEntity implements New {
     @PrimaryKey
     private int id;
     @ColumnInfo(name = "title")
+    @SerializedName("titulo")
     private String title;
     @ColumnInfo(name = "body")
+    @SerializedName("cuerpo")
     private String body;
+    @SerializedName("imagen")
     @ColumnInfo(name = "image")
     private Uri image;
+    @SerializedName("fecha")
     @ColumnInfo(name = "date")
     private Date date;
 

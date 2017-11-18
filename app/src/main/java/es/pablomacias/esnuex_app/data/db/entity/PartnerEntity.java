@@ -25,6 +25,8 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 import android.net.Uri;
 
+import com.google.gson.annotations.SerializedName;
+
 import es.pablomacias.esnuex_app.data.model.Partner;
 
 /**
@@ -36,16 +38,22 @@ public class PartnerEntity implements Partner, EtcType {
     @PrimaryKey
     private int id;
     @ColumnInfo(name = "nombre")
+    @SerializedName("nombre")
     private String name;
     @ColumnInfo(name = "tipo")
+    @SerializedName("descripcion")
     private String category;
     @ColumnInfo(name = "descripcion")
+    @SerializedName("descuento")
     private String description;
     @ColumnInfo(name = "ubicacion")
+    @SerializedName("ubicacion")
     private String address;
     @ColumnInfo(name = "delegacion")
+    @SerializedName("delegacion")
     private int delegation;
     @ColumnInfo(name = "imagen")
+    @SerializedName("imagen")
     private Uri image;
 
     public PartnerEntity() {
