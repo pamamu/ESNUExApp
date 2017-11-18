@@ -176,9 +176,9 @@ public class SignupActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             FirebaseUser user = auth.getCurrentUser();
                             userPreferencesUtil.updateUser();
-                            progressBar.setVisibility(View.GONE);
                             startActivity(new Intent(SignupActivity.this, MainActivity.class));
                             finish();
+                            progressBar.setVisibility(View.GONE);
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w("ERROR", "signInWithCredential:failure", task.getException());

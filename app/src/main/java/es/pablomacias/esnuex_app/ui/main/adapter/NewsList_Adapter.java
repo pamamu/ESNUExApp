@@ -33,6 +33,7 @@ import com.squareup.picasso.Picasso;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -56,7 +57,7 @@ public class NewsList_Adapter extends RecyclerView.Adapter<NewsList_Adapter.NewV
     @Override
     public void onBindViewHolder(NewViewHolder holder, int position) {
         holder.title.setText(news.get(position).getTitle());
-        DateFormat df = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+        DateFormat df = new SimpleDateFormat("EEEE, MMM dd, yyyy", Locale.UK);
         holder.time.setText(df.format(news.get(position).getDate()));
         ImageView imageView = holder.image;
         Picasso

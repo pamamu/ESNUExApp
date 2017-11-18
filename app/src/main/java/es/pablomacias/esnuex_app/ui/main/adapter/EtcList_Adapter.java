@@ -22,7 +22,6 @@ package es.pablomacias.esnuex_app.ui.main.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -64,7 +63,6 @@ public class EtcList_Adapter extends RecyclerView.Adapter<EtcList_Adapter.EtcVie
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.i(TAG, "onClick: " + position);
                 listener.itemclicked(objets.get(position));
             }
         });
@@ -103,6 +101,5 @@ public class EtcList_Adapter extends RecyclerView.Adapter<EtcList_Adapter.EtcVie
         this.objets = objets;
         this.context = context;
         this.listener = listener;
-        Log.i(TAG, "EtcList_Adapter: " + objets.size());
     }
 }

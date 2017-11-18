@@ -24,10 +24,11 @@
     android:orientation="horizontal">
 
     <LinearLayout
-        android:layout_marginRight="5dp"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:paddingRight="5dp">
 
         <LinearLayout
             android:id="@+id/information_buttom"

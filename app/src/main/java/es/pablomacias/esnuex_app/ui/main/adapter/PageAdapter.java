@@ -23,6 +23,9 @@ package es.pablomacias.esnuex_app.ui.main.adapter;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.view.ViewGroup;
+
+import java.util.ArrayList;
 
 import es.pablomacias.esnuex_app.common.utils.FragmentsEnum;
 import es.pablomacias.esnuex_app.ui.main.fragments.List_Fragment;
@@ -31,11 +34,13 @@ import es.pablomacias.esnuex_app.ui.main.fragments.List_Fragment;
 public class PageAdapter extends FragmentStatePagerAdapter {
     private int nTabs;
     private FragmentsEnum type;
+    private ArrayList<Fragment> fragments;
 
     public PageAdapter(FragmentManager fm, int nTabs, FragmentsEnum type) {
         super(fm);
         this.nTabs = nTabs;
         this.type = type;
+        fragments = new ArrayList<>();
     }
 
     @Override
@@ -49,5 +54,10 @@ public class PageAdapter extends FragmentStatePagerAdapter {
     @Override
     public int getCount() {
         return nTabs;
+    }
+
+    @Override
+    public void destroyItem(ViewGroup container, int position, Object object) {
+        super.destroyItem(container, position, object);
     }
 }

@@ -51,6 +51,7 @@ public class Information_Fragment extends Fragment implements Information_Interf
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         informationPresenter = new InformationPresenter(getContext(), this);
+
     }
 
     @Override

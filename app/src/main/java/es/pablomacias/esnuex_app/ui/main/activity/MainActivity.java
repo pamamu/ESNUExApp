@@ -21,22 +21,33 @@
 package es.pablomacias.esnuex_app.ui.main.activity;
 
 import android.content.Intent;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
+import de.hdodenhof.circleimageview.CircleImageView;
 import es.pablomacias.esnuex_app.R;
 import es.pablomacias.esnuex_app.common.BaseActivity;
+import es.pablomacias.esnuex_app.common.utils.models.User;
 import es.pablomacias.esnuex_app.ui.drawer.adapter.MenuLinkAdapter;
 import es.pablomacias.esnuex_app.ui.drawer.presenter.DrawerPresenter;
 import es.pablomacias.esnuex_app.ui.login.activity.SignupActivity;
@@ -58,6 +69,15 @@ public class MainActivity extends BaseActivity implements MainInterface {
     @BindView(R.id.main_content_frame)
     ViewGroup viewGroup;
 
+    @BindView(R.id.profile_image)
+    CircleImageView circleImageView;
+    @BindView(R.id.profile_name)
+    TextView profile_name;
+    @BindView(R.id.profile_email)
+    TextView profile_email;
+    @BindView(R.id.drawer_header)
+    LinearLayout linearLayout;
+
     DrawerPresenter drawerPresenter;
     MainPresenter mainPresenter;
     MenuLinkAdapter menuLinkAdapter;
@@ -73,12 +93,11 @@ public class MainActivity extends BaseActivity implements MainInterface {
 
         toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
+        drawer.addDrawerListener(toggle);
         toggle.syncState();
 
         updateUI();
-        //-------------------
-        //-------------------
+
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -89,6 +108,36 @@ public class MainActivity extends BaseActivity implements MainInterface {
         });
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    private void updateUser() {
+        User user = drawerPresenter.getUser();
+        if (user != null) {
+            circleImageView.setVisibility(View.VISIBLE);
+            profile_email.setVisibility(View.VISIBLE);
+            profile_name.setVisibility(View.VISIBLE);
+            linearLayout.setBackground(this.getDrawable(R.color.esn_dark_blue));
+            if (!user.getPhoto().isEmpty())
+                Picasso.with(getApplicationContext())
+                        .load(Uri.parse(user.getPhoto()))
+                        .fit()
+                        .placeholder(R.drawable.loading_image)
+                        .error(R.drawable.esn)
+                        .into(circleImageView);
+            if (!user.getName().isEmpty()) {
+                profile_name.setText(user.getName());
+                profile_email.setText(user.getEmail());
+            } else {
+                profile_name.setText(user.getEmail());
+                profile_email.setText("Sin Nombre - Sin fotografía");
+            }
+        } else {
+            circleImageView.setVisibility(View.INVISIBLE);
+            profile_email.setVisibility(View.INVISIBLE);
+            profile_name.setVisibility(View.INVISIBLE);
+            linearLayout.setBackground(this.getDrawable(R.drawable.esn_uex_color));
+        }
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_activity, menu);
@@ -97,28 +146,30 @@ public class MainActivity extends BaseActivity implements MainInterface {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
 
-        if (id == R.id.action_logout) {
-            mainPresenter.logout();
-        }
 
         return super.onOptionsItemSelected(item);
     }
 
     public void openFragment(Fragment fragment) {
+        Log.i(TAG, "onBackPressed: STACKINI " + getSupportFragmentManager().getBackStackEntryCount());
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.main_content_frame, fragment);
+        ft.replace(R.id.main_content_frame, fragment).addToBackStack(null);
         ft.commit();
+        Log.i(TAG, "onBackPressed: STACKFIN " + getSupportFragmentManager().getBackStackEntryCount());
     }
 
     @Override
     public void onBackPressed() {
         drawer.closeDrawers();
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        setTitle(getString(R.string.app_name));
-        ft.replace(R.id.main_content_frame, new Home_Fragment()).addToBackStack(null);
-        ft.commit();
+        if (getSupportFragmentManager().getBackStackEntryCount() > 1) {
+            getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            setTitle(getString(R.string.app_name));
+            ft.replace(R.id.main_content_frame, new Home_Fragment());
+            ft.commit();
+        } else
+            super.onBackPressed();
     }
 
     @Override
@@ -143,6 +194,9 @@ public class MainActivity extends BaseActivity implements MainInterface {
         setTitle(getString(R.string.app_name));
         openFragment(new Home_Fragment());
         viewGroup.invalidate();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            updateUser();
+        }
     }
 
 

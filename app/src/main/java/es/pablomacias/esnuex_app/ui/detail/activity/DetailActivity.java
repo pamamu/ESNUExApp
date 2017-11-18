@@ -22,10 +22,15 @@ package es.pablomacias.esnuex_app.ui.detail.activity;
 
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
+
+import java.util.Date;
 
 import butterknife.BindView;
 import es.pablomacias.esnuex_app.R;
@@ -43,6 +48,12 @@ public class DetailActivity extends BaseActivity implements Detail_interface {
     TextView content;
     @BindView(R.id.view_location_text)
     TextView location;
+    @BindView(R.id.go_button)
+    FloatingActionButton floatingActionButton;
+    @BindView(R.id.view_location)
+    LinearLayout linearLayout;
+
+    private Date date;
 
     DetailPresenter detailPresenter;
 
@@ -50,6 +61,19 @@ public class DetailActivity extends BaseActivity implements Detail_interface {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         detailPresenter = new DetailPresenter(getApplicationContext(), getIntent(), this);
+
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                detailPresenter.addToCalendar();
+            }
+        });
+        linearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                detailPresenter.goTo();
+            }
+        });
 
     }
 

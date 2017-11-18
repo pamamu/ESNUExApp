@@ -103,7 +103,7 @@ public class TripEntity implements Trip, EtcType {
 
     @Override
     public String getSubtitle() {
-        DateFormat df = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+        DateFormat df = new SimpleDateFormat("EEEE, dd/MMMM/yyyy 'a las' HH:mm:ss");
         return df.format(this.dateTime);
     }
 

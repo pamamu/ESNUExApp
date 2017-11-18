@@ -20,9 +20,18 @@
 
 package es.pablomacias.esnuex_app.ui.detail.presenter;
 
+import android.content.ContentUris;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.provider.CalendarContract;
+import android.widget.Toast;
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 import es.pablomacias.esnuex_app.ui.detail.activity.Detail_interface;
 
@@ -35,6 +44,9 @@ public class DetailPresenter {
     private String type;
     private final String TAG = this.getClass().getSimpleName();
     private Detail_interface detail_interface;
+    private Date date;
+    private boolean received;
+    String[] information;
 
     public DetailPresenter(Context context, Intent intent, Detail_interface detail_interface) {
         this.context = context;
@@ -43,16 +55,48 @@ public class DetailPresenter {
     }
 
     private void createEtcObject(Intent intent) {
-        String[] information = intent.getStringArrayExtra("information");
-        if (information.length > 0) {
+        information = intent.getStringArrayExtra("information");
+        received = information.length > 0;
+        if (received) {
+            received = true;
             detail_interface.setImage(Uri.parse(information[0]));
             detail_interface.setTitle(information[1]);
             detail_interface.setSubtitle(information[2]);
             detail_interface.setDescription(information[3]);
+            getDate(information[3]);
             detail_interface.setPlace(information[4]);
         }
+    }
 
+    private void getDate(String s) {
+        try {
+            DateFormat df = new SimpleDateFormat("EEEE, dd/MMMM/yyyy 'a las' HH:mm:ss");
+            date = df.parse(s);
+        } catch (ParseException e) {
+            date = Calendar.getInstance().getTime();
+        }
+    }
 
+    public void addToCalendar() {
+        if (received) {
+            Uri.Builder builder = CalendarContract.CONTENT_URI.buildUpon();
+            builder.appendPath("time");
+            ContentUris.appendId(builder, date.getTime());
+            Toast.makeText(context, "Adding event to Calendar App", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(Intent.ACTION_EDIT);
+            intent.setType("vnd.android.cursor.item/event");
+            intent.putExtra("beginTime", date.getTime());
+            intent.putExtra("title", information[1]);
+            intent.putExtra("description", information[3]);
+            intent.putExtra("eventLocation", information[4]);
+            context.startActivity(intent);
+        }
+    }
+
+    public void goTo() {
+        Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
+                Uri.parse("google.navigation:q=" + information[4]));
+        context.startActivity(intent);
     }
 
 }

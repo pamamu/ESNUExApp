@@ -27,6 +27,7 @@ import java.util.ArrayList;
 import es.pablomacias.esnuex_app.common.utils.LinkPreferencesUtil;
 import es.pablomacias.esnuex_app.common.utils.UserPreferencesUtil;
 import es.pablomacias.esnuex_app.common.utils.models.Link;
+import es.pablomacias.esnuex_app.common.utils.models.User;
 
 /**
  * Created by pablomaciasmu on 15/11/17.
@@ -35,11 +36,13 @@ import es.pablomacias.esnuex_app.common.utils.models.Link;
 public class DrawerPresenter {
     private Context context;
     private LinkPreferencesUtil linkPreferencesUtil;
+    private UserPreferencesUtil userPreferencesUtil;
 
 
     public DrawerPresenter(Context context) {
         this.context = context;
         this.linkPreferencesUtil = new LinkPreferencesUtil(context);
+        this.userPreferencesUtil = new UserPreferencesUtil(context);
     }
 
     public ArrayList<Link> getLinks() {
@@ -55,6 +58,10 @@ public class DrawerPresenter {
         }
         list.remove(list.size() - 2);
         return list;
+    }
+
+    public User getUser() {
+        return userPreferencesUtil.getUser();
     }
 
 }

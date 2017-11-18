@@ -48,7 +48,7 @@ public class TabFragment extends Fragment {
     private Context context;
     @BindView(R.id.tabs)
     TabLayout tabLayout;
-    @BindView(R.id.pager)
+    @BindView(R.id.vw_pager)
     ViewPager viewPager;
 
     public TabFragment() {
@@ -89,8 +89,7 @@ public class TabFragment extends Fragment {
         tabLayout.addTab(tabLayout.newTab().setText(R.string.merida));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
-        PageAdapter pageAdapter = new PageAdapter(getFragmentManager(), tabLayout.getTabCount(), FragmentsEnum.valueOf(type));
-
+        PageAdapter pageAdapter = new PageAdapter(getActivity().getSupportFragmentManager(), tabLayout.getTabCount(), FragmentsEnum.valueOf(type));
         viewPager.setAdapter(pageAdapter);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {

@@ -94,6 +94,7 @@ public class List_Fragment extends Fragment implements Etc_Item_Listener {
             this.type = bundle.getString(fragmentType);
             this.delegation = bundle.getInt(fragmentDelegation);
         }
+
     }
 
     @Nullable
@@ -134,7 +135,8 @@ public class List_Fragment extends Fragment implements Etc_Item_Listener {
         String information[] = {
                 item.getImage().toString(),
                 item.getName(), item.getSubtitle(),
-                item.getDescription(), item.getAddress()};
+                item.getDescription(), item.getAddress(), type
+        };
         intent.putExtra("information", information);
         startActivity(intent);
     }

@@ -35,6 +35,7 @@ import android.widget.LinearLayout;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import es.pablomacias.esnuex_app.R;
+import es.pablomacias.esnuex_app.common.utils.FragmentsEnum;
 import es.pablomacias.esnuex_app.ui.main.activity.MainActivity;
 import es.pablomacias.esnuex_app.ui.main.adapter.NewsList_Adapter;
 import es.pablomacias.esnuex_app.ui.main.presenter.Home_Presenter;
@@ -68,7 +69,6 @@ public class Home_Fragment extends Fragment implements Home_Interface {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Nullable
@@ -88,9 +88,28 @@ public class Home_Fragment extends Fragment implements Home_Interface {
         information.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentTransaction ft = getFragmentManager().beginTransaction();
+                FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
                 ((MainActivity) getActivity()).getSupportActionBar().setTitle(R.string.information);
-                ft.replace(R.id.main_content_frame, new Information_Fragment());
+                ft.replace(R.id.main_content_frame, new Information_Fragment()).addToBackStack(null);
+                ft.commit();
+            }
+        });
+
+        trips.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                ((MainActivity) getActivity()).getSupportActionBar().setTitle(R.string.trips);
+                ft.replace(R.id.main_content_frame, TabFragment.newInstance(FragmentsEnum.TRIP)).addToBackStack(null);
+                ft.commit();
+            }
+        });
+        events.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                ((MainActivity) getActivity()).getSupportActionBar().setTitle(R.string.events);
+                ft.replace(R.id.main_content_frame, TabFragment.newInstance(FragmentsEnum.EVENT)).addToBackStack(null);
                 ft.commit();
             }
         });
