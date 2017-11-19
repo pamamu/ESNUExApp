@@ -45,7 +45,7 @@ import es.pablomacias.esnuex_app.data.db.entity.TripEntity;
 
 @Database(entities = {DelegationEntity.class, EventEntity.class, NewEntity.class,
         PartnerEntity.class, TripEntity.class},
-        version = 1)
+        version = 2)
 @TypeConverters({DateConverter.class, UriConverter.class})
 public abstract class AppDatabase extends RoomDatabase {
     private static AppDatabase INSTANCE;
@@ -55,6 +55,7 @@ public abstract class AppDatabase extends RoomDatabase {
             synchronized (AppDatabase.class) {
                 if (INSTANCE == null)
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(), AppDatabase.class, DATABASE_NAME)
+                            .fallbackToDestructiveMigration()
                             .allowMainThreadQueries().build();
             }
         }

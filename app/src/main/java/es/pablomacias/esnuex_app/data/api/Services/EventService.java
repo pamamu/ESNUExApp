@@ -45,17 +45,16 @@ public class EventService implements EventServiceInteractor {
     public void getEvents() {
         ApiInterface apiInterface = ApiClient.getClient();
         Call<List<EventEntity>> call = apiInterface.listEvents();
-
         call.enqueue(new Callback<List<EventEntity>>() {
             @Override
             public void onResponse(Call<List<EventEntity>> call, Response<List<EventEntity>> response) {
                 if (response.isSuccessful())
-                    callBackListener.onResponse(call, response);
+                    callBackListener.onResponseEvent(call, response);
             }
 
             @Override
             public void onFailure(Call<List<EventEntity>> call, Throwable t) {
-                callBackListener.onFailure(call, t);
+                callBackListener.onFailureEvent(call, t);
             }
         });
     }

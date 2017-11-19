@@ -21,6 +21,8 @@
 package es.pablomacias.esnuex_app.data.db.dao;
 
 import android.arch.persistence.room.Dao;
+import android.arch.persistence.room.Insert;
+import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Query;
 
 import java.util.List;
@@ -34,5 +36,11 @@ import es.pablomacias.esnuex_app.data.db.entity.PartnerEntity;
 public interface PartnerDao {
     @Query("SELECT * FROM Partner where delegacion = :delegation")
     List<PartnerEntity> loadAllsByDelegation(int delegation);
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void insertAll(List<PartnerEntity> partnerEntities);
+
+    @Query("DELETE FROM Partner")
+    void truncateTable();
 
 }

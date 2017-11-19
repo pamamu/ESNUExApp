@@ -35,10 +35,19 @@ public class PartnerRepository implements Repository<PartnerEntity> {
 
     public PartnerRepository(AppDatabase appDatabase) {
         this.appDatabase = appDatabase;
-        initRepository();
+        resetRepository();
     }
 
-    private void initRepository() {
+    private void resetRepository() {
+        appDatabase.partnerDao().truncateTable();
+    }
+
+    public void initRepository() {
+        //TODO INSERTAR DATOS DE PRUEBA
+    }
+
+    public void initRepositoryByData(List<PartnerEntity> list) {
+        appDatabase.partnerDao().insertAll(list);
     }
 
     public static PartnerRepository getInstance(final AppDatabase appDatabase) {

@@ -23,7 +23,6 @@ package es.pablomacias.esnuex_app.data.db.entity;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
-import android.net.Uri;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -52,7 +51,7 @@ public class EventEntity implements Event, EtcType {
     private int delegation;
     @ColumnInfo(name = "imagen")
     @SerializedName("imagen")
-    private Uri image;
+    private String image;
     @ColumnInfo(name = "fecha_inicio")
     @SerializedName("fecha-inicio")
     private Date dateTime;
@@ -124,15 +123,15 @@ public class EventEntity implements Event, EtcType {
     }
 
     @Override
-    public Uri getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(Uri image) {
+    public void setImage(String image) {
         this.image = image;
     }
 
-    public EventEntity(String name, String address, int delegation, Uri image, Date dateTime, String description) {
+    public EventEntity(String name, String address, int delegation, String image, Date dateTime, String description) {
         this.name = name;
         this.address = address;
         this.delegation = delegation;

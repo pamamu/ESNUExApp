@@ -35,11 +35,20 @@ public class EventRepository implements Repository<EventEntity> {
 
     public EventRepository(AppDatabase appDatabase) {
         this.appDatabase = appDatabase;
-        initRepository();
+        resetRepository();
     }
 
-    private void initRepository() {
+    private void resetRepository() {
         appDatabase.eventDao().truncateTable();
+    }
+
+
+    public void initRepository() {
+        //TODO INSERTAR DATOS DE MUESTRA
+    }
+
+    public void initRepositoryByData(List<EventEntity> list) {
+        appDatabase.eventDao().insertAll(list);
     }
 
     public static EventRepository getInstance(final AppDatabase appDatabase) {

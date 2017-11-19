@@ -20,8 +20,6 @@
 
 package es.pablomacias.esnuex_app.data.db.entity;
 
-import android.net.Uri;
-
 /**
  * Created by pablomaciasmu on 16/11/17.
  */
@@ -37,5 +35,5 @@ public interface EtcType {
 
     String getDescription();
 
-    Uri getImage();
+    String getImage();
 }

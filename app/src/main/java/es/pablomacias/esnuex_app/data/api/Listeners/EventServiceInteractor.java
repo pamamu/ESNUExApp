@@ -32,9 +32,9 @@ import retrofit2.Response;
 
 public interface EventServiceInteractor {
     interface CallBackListener {
-        void onResponse(Call<List<EventEntity>> call, Response<List<EventEntity>> response);
+        void onResponseEvent(Call<List<EventEntity>> call, Response<List<EventEntity>> response);
 
-        void onFailure(Call<List<EventEntity>> call, Throwable t);
+        void onFailureEvent(Call<List<EventEntity>> call, Throwable t);
 
     }
 

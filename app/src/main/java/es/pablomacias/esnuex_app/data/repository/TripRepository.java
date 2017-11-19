@@ -35,11 +35,19 @@ public class TripRepository implements Repository<TripEntity> {
 
     public TripRepository(AppDatabase appDatabase) {
         this.appDatabase = appDatabase;
-        initRepository();
+        resetRepository();
     }
 
-    private void initRepository() {
+    private void resetRepository() {
         appDatabase.tripDao().truncateTable();
+    }
+
+    public void initRepository() {
+        //TODO INSERTAR DATOS DE PRUEBA
+    }
+
+    public void initRepositoryByData(List<TripEntity> list) {
+        appDatabase.tripDao().insertAll(list);
     }
 
     public static TripRepository getInstance(final AppDatabase appDatabase) {

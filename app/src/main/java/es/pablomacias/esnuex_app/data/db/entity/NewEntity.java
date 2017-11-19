@@ -23,7 +23,6 @@ package es.pablomacias.esnuex_app.data.db.entity;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
-import android.net.Uri;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -47,22 +46,34 @@ public class NewEntity implements New {
     private String body;
     @SerializedName("imagen")
     @ColumnInfo(name = "image")
-    private Uri image;
+    private String image;
     @SerializedName("fecha")
     @ColumnInfo(name = "date")
     private Date date;
+    @SerializedName("link")
+    @ColumnInfo(name = "link")
+    private String link;
+
 
     public NewEntity() {
     }
 
-    public NewEntity(int id, String title, Uri image, Date date) {
+    public NewEntity(int id, String title, String image, Date date, String link) {
+        this.id = id;
+        this.title = title;
+        this.image = image;
+        this.date = date;
+        this.link = link;
+    }
+
+    public NewEntity(int id, String title, String image, Date date) {
         this.id = id;
         this.title = title;
         this.image = image;
         this.date = date;
     }
 
-    public NewEntity(String title, Uri image, Date date) {
+    public NewEntity(String title, String image, Date date) {
         this.title = title;
         this.image = image;
         this.date = date;
@@ -105,11 +116,20 @@ public class NewEntity implements New {
     }
 
     @Override
-    public Uri getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(Uri image) {
+    public void setImage(String image) {
         this.image = image;
+    }
+
+    @Override
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
     }
 }

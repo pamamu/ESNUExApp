@@ -32,9 +32,9 @@ import retrofit2.Response;
 
 public interface PartnerServiceInteractor {
     interface CallBackListener {
-        void onResponse(Call<List<PartnerEntity>> call, Response<List<PartnerEntity>> response);
+        void onResponsePartner(Call<List<PartnerEntity>> call, Response<List<PartnerEntity>> response);
 
-        void onFailure(Call<List<PartnerEntity>> call, Throwable t);
+        void onFailurePartner(Call<List<PartnerEntity>> call, Throwable t);
 
     }
 

@@ -22,7 +22,6 @@ package es.pablomacias.esnuex_app.ui.main.fragments;
 
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -107,15 +106,15 @@ public class List_Fragment extends Fragment implements Etc_Item_Listener {
 
         List<EtcType> elements = new ArrayList<>();
         elements.add(new EventEntity("Evento 1", "Calle los Perdigones", 1,
-                Uri.parse("http://www.hdfondos.eu/preview/get_photo/437341/1920/1080"),
+                "http://www.hdfondos.eu/preview/get_photo/437341/1920/1080",
                 Calendar.getInstance().getTime(), "Descripcion"));
 
         elements.add(new EventEntity("Evento 2", "Calle los Perdigones", 1,
-                Uri.parse("http://www.hdfondos.eu/preview/get_photo/437341/1920/1080"),
+                "http://www.hdfondos.eu/preview/get_photo/437341/1920/1080",
                 Calendar.getInstance().getTime(), "Descripcion"));
 
         elements.add(new EventEntity("Evento 3", "Calle los Perdigones", 1,
-                Uri.parse("http://www.hdfondos.eu/preview/get_photo/437341/1920/1080"),
+                "http://www.hdfondos.eu/preview/get_photo/437341/1920/1080",
                 Calendar.getInstance().getTime(), "Descripcion"));
 
         item_list.setHasFixedSize(true);
@@ -130,10 +129,9 @@ public class List_Fragment extends Fragment implements Etc_Item_Listener {
 
     @Override
     public void itemclicked(EtcType item) {
-        Log.i(TAG, "itemclicked: ");
         Intent intent = new Intent(context, DetailActivity.class);
         String information[] = {
-                item.getImage().toString(),
+                item.getImage(),
                 item.getName(), item.getSubtitle(),
                 item.getDescription(), item.getAddress(), type
         };

@@ -50,12 +50,12 @@ public class PartnerService implements PartnerServiceInteractor {
             @Override
             public void onResponse(Call<List<PartnerEntity>> call, Response<List<PartnerEntity>> response) {
                 if (response.isSuccessful())
-                    callBackListener.onResponse(call, response);
+                    callBackListener.onResponsePartner(call, response);
             }
 
             @Override
             public void onFailure(Call<List<PartnerEntity>> call, Throwable t) {
-                callBackListener.onFailure(call, t);
+                callBackListener.onFailurePartner(call, t);
             }
         });
     }

@@ -20,6 +20,8 @@
 
 package es.pablomacias.esnuex_app.data.api.Services;
 
+import android.util.Log;
+
 import java.util.List;
 
 import es.pablomacias.esnuex_app.data.api.ApiClient;
@@ -36,6 +38,7 @@ import retrofit2.Response;
 
 public class NewService implements NewServiceInteractor {
     private CallBackListener callBackListener;
+    private static final String TAG = NewService.class.getSimpleName();
 
     public NewService(CallBackListener callBackListener) {
         this.callBackListener = callBackListener;
@@ -45,18 +48,20 @@ public class NewService implements NewServiceInteractor {
     public void getNews() {
         ApiInterface apiInterface = ApiClient.getClient();
         Call<List<NewEntity>> call = apiInterface.listNews();
-
+        Log.i(TAG, "getNews: ");
         call.enqueue(new Callback<List<NewEntity>>() {
             @Override
             public void onResponse(Call<List<NewEntity>> call, Response<List<NewEntity>> response) {
                 if (response.isSuccessful()) {
-                    callBackListener.onResponse(call, response);
+                    Log.i(TAG, "onResponse: ");
+                    callBackListener.onResponseNew(call, response);
                 }
             }
 
             @Override
             public void onFailure(Call<List<NewEntity>> call, Throwable t) {
-                callBackListener.onFailure(call, t);
+                Log.i(TAG, "onFailure: ");
+                callBackListener.onFailureNew(call, t);
             }
         });
     }

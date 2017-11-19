@@ -25,25 +25,26 @@
 
     <TextView
         android:id="@+id/new_text"
-        android:layout_width="210dp"
+        android:layout_width="260dp"
         android:layout_height="45dp"
         android:layout_margin="5dp"
         android:ellipsize="end"
         android:maxLines="2"
         android:paddingLeft="10dp"
         android:textStyle="bold"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="@dimen/body"
         tools:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaasssssssssaaaaaaaa" />
 
     <TextView
         android:id="@+id/time_new"
-        android:layout_width="210dp"
+        android:layout_width="260dp"
         android:layout_height="20dp"
         android:layout_alignBottom="@+id/new_image"
         android:layout_alignLeft="@+id/new_text"
         android:layout_alignStart="@+id/new_text"
         android:paddingLeft="15dp"
+        android:textColor="@color/grey"
         tools:text="Hace 2 horas" />
 
     <ImageView

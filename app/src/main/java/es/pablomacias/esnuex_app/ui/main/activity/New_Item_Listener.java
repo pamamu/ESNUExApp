@@ -18,24 +18,14 @@
  *
  */
 
-package es.pablomacias.esnuex_app.data.api.Listeners;
-
-import java.util.List;
+package es.pablomacias.esnuex_app.ui.main.activity;
 
 import es.pablomacias.esnuex_app.data.db.entity.NewEntity;
-import retrofit2.Call;
-import retrofit2.Response;
 
 /**
  * Created by pablomaciasmu on 18/11/17.
  */
 
-public interface NewServiceInteractor {
-    interface CallBackListener {
-        void onResponseNew(Call<List<NewEntity>> call, Response<List<NewEntity>> response);
-
-        void onFailureNew(Call<List<NewEntity>> call, Throwable t);
-    }
-
-    void getNews();
+public interface New_Item_Listener {
+    void newclicked(NewEntity newEntity);
 }

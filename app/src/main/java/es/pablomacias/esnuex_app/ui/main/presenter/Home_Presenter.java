@@ -23,7 +23,6 @@ package es.pablomacias.esnuex_app.ui.main.presenter;
 import android.content.Context;
 import android.util.Log;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import es.pablomacias.esnuex_app.data.db.AppDatabase;
@@ -37,16 +36,14 @@ import es.pablomacias.esnuex_app.ui.main.fragments.Home_Interface;
 
 public class Home_Presenter {
     private Context context;
-    private ArrayList<NewEntity> newEntities;
     private final String TAG = this.getClass().getSimpleName();
-    private Home_Interface home_interface;
+    //    private Home_Interface home_interface;
     private NewRespository newRespository;
 
     public Home_Presenter(Context context, Home_Interface home_interface) {
         Log.i(TAG, "Home_Presenter: context = " + context);
         this.context = context;
-        this.home_interface = home_interface;
-        newEntities = new ArrayList<>();
+//        this.home_interface = home_interface;
         newRespository = NewRespository.getInstance(AppDatabase.getAppDatabase(context));
     }
 

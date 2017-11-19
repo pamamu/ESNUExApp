@@ -23,7 +23,6 @@ package es.pablomacias.esnuex_app.data.db.entity;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
-import android.net.Uri;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -51,7 +50,7 @@ public class TripEntity implements Trip, EtcType {
     private int delegation;
     @ColumnInfo(name = "imagen")
     @SerializedName("imagen")
-    private Uri image;
+    private String image;
     @ColumnInfo(name = "fecha")
     @SerializedName("fecha")
     private Date dateTime;
@@ -62,7 +61,7 @@ public class TripEntity implements Trip, EtcType {
     public TripEntity() {
     }
 
-    public TripEntity(int id, String name, String place, int delegation, Uri image, Date dateTime, String description) {
+    public TripEntity(int id, String name, String place, int delegation, String image, Date dateTime, String description) {
         this.id = id;
         this.name = name;
         this.place = place;
@@ -120,11 +119,11 @@ public class TripEntity implements Trip, EtcType {
     }
 
     @Override
-    public Uri getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(Uri image) {
+    public void setImage(String image) {
         this.image = image;
     }
 

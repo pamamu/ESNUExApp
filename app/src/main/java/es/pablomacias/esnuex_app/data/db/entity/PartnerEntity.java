@@ -23,7 +23,6 @@ package es.pablomacias.esnuex_app.data.db.entity;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
-import android.net.Uri;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -54,12 +53,12 @@ public class PartnerEntity implements Partner, EtcType {
     private int delegation;
     @ColumnInfo(name = "imagen")
     @SerializedName("imagen")
-    private Uri image;
+    private String image;
 
     public PartnerEntity() {
     }
 
-    public PartnerEntity(int id, String name, String category, String description, String address, int delegation, Uri image) {
+    public PartnerEntity(int id, String name, String category, String description, String address, int delegation, String image) {
         this.id = id;
         this.name = name;
         this.category = category;
@@ -129,11 +128,11 @@ public class PartnerEntity implements Partner, EtcType {
     }
 
     @Override
-    public Uri getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(Uri image) {
+    public void setImage(String image) {
         this.image = image;
     }
 }

@@ -21,12 +21,15 @@
 package es.pablomacias.esnuex_app.ui.main.fragments;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,7 +39,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import es.pablomacias.esnuex_app.R;
 import es.pablomacias.esnuex_app.common.utils.FragmentsEnum;
+import es.pablomacias.esnuex_app.data.db.entity.NewEntity;
 import es.pablomacias.esnuex_app.ui.main.activity.MainActivity;
+import es.pablomacias.esnuex_app.ui.main.activity.New_Item_Listener;
 import es.pablomacias.esnuex_app.ui.main.adapter.NewsList_Adapter;
 import es.pablomacias.esnuex_app.ui.main.presenter.Home_Presenter;
 
@@ -44,7 +49,7 @@ import es.pablomacias.esnuex_app.ui.main.presenter.Home_Presenter;
  * Created by pablomaciasmu on 16/11/17.
  */
 
-public class Home_Fragment extends Fragment implements Home_Interface {
+public class Home_Fragment extends Fragment implements Home_Interface, New_Item_Listener {
     @BindView(R.id.information_buttom)
     LinearLayout information;
     @BindView(R.id.trips_button)
@@ -56,6 +61,7 @@ public class Home_Fragment extends Fragment implements Home_Interface {
     RecyclerView.LayoutManager manager;
     private NewsList_Adapter adapter;
     Home_Presenter home_presenter;
+    private static final String TAG = Home_Fragment.class.getSimpleName();
 
     public Home_Fragment() {
     }
@@ -81,7 +87,7 @@ public class Home_Fragment extends Fragment implements Home_Interface {
         manager = new LinearLayoutManager(getContext());
         newList.setLayoutManager(manager);
 
-        adapter = new NewsList_Adapter(home_presenter.getNews(), getContext());
+        adapter = new NewsList_Adapter(home_presenter.getNews(), getContext(), this);
         newList.setAdapter(adapter);
 
 
@@ -118,4 +124,12 @@ public class Home_Fragment extends Fragment implements Home_Interface {
 
     }
 
+    @Override
+    public void newclicked(NewEntity newEntity) {
+        Log.i(TAG, "newclicked: " + newEntity.getTitle());
+        if (!Uri.EMPTY.equals(newEntity.getLink())) {
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(newEntity.getLink()));
+            startActivity(browserIntent);
+        }
+    }
 }

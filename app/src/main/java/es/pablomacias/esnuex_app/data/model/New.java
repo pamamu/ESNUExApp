@@ -20,8 +20,6 @@
 
 package es.pablomacias.esnuex_app.data.model;
 
-import android.net.Uri;
-
 import java.util.Date;
 
 /**
@@ -36,7 +34,9 @@ public interface New {
 
     String getBody();
 
-    Uri getImage();
+    String getImage();
 
     Date getDate();
+
+    String getLink();
 }

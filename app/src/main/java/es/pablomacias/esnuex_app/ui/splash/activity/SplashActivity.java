@@ -23,50 +23,59 @@ package es.pablomacias.esnuex_app.ui.splash.activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
 import android.widget.ImageView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import es.pablomacias.esnuex_app.R;
+import es.pablomacias.esnuex_app.common.BaseActivity;
 import es.pablomacias.esnuex_app.ui.main.activity.MainActivity;
+import es.pablomacias.esnuex_app.ui.splash.presenter.SplashPresenter;
 
-public class SplashActivity extends AppCompatActivity {
+public class SplashActivity extends BaseActivity implements SplashViewInterface {
 
     // Set the duration of the splash screen
-    private static final long SPLASH_SCREEN_DELAY = 3000;
+    private static final long SPLASH_SCREEN_DELAY = 1000;
 
     @BindView(R.id.splash_image)
     ImageView imageView;
+    SplashPresenter splashPresenter;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         // Set portrait orientation
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         // Hide title bar
         requestWindowFeature(Window.FEATURE_NO_TITLE);
+        super.onCreate(savedInstanceState);
+        splashPresenter = new SplashPresenter(getApplicationContext(), this);
+        splashPresenter.goToNextActivity();
+    }
 
-        setContentView(R.layout.activity_splash);
-        ButterKnife.bind(this);
+    @Override
+    public int getLayoutId() {
+        return R.layout.activity_splash;
+    }
 
+    @Override
+    public void goToHome() {
+        Picasso.with(getApplicationContext()).load(R.drawable.esn_uex_color)
+                .into(imageView);
         TimerTask task = new TimerTask() {
             @Override
             public void run() {
-
-                // Start the next activity
                 Intent mainIntent = new Intent().setClass(
                         SplashActivity.this, MainActivity.class);
+                mainIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(mainIntent);
-
-                // Close the activity so the user won't able to go back this
-                // activity pressing Back button
                 finish();
+
             }
         };
 

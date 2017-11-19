@@ -21,6 +21,7 @@
 package es.pablomacias.esnuex_app.ui.main.adapter;
 
 import android.content.Context;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,6 +40,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import es.pablomacias.esnuex_app.R;
 import es.pablomacias.esnuex_app.data.db.entity.NewEntity;
+import es.pablomacias.esnuex_app.ui.main.activity.New_Item_Listener;
 
 /**
  * Created by pablomaciasmu on 16/11/17.
@@ -47,6 +49,7 @@ import es.pablomacias.esnuex_app.data.db.entity.NewEntity;
 public class NewsList_Adapter extends RecyclerView.Adapter<NewsList_Adapter.NewViewHolder> {
     private List<NewEntity> news;
     Context context;
+    New_Item_Listener new_item_listener;
 
     @Override
     public NewViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -55,14 +58,20 @@ public class NewsList_Adapter extends RecyclerView.Adapter<NewsList_Adapter.NewV
     }
 
     @Override
-    public void onBindViewHolder(NewViewHolder holder, int position) {
+    public void onBindViewHolder(NewViewHolder holder, final int position) {
         holder.title.setText(news.get(position).getTitle());
         DateFormat df = new SimpleDateFormat("EEEE, MMM dd, yyyy", Locale.UK);
         holder.time.setText(df.format(news.get(position).getDate()));
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new_item_listener.newclicked(news.get(position));
+            }
+        });
         ImageView imageView = holder.image;
         Picasso
                 .with(context)
-                .load(news.get(position).getImage())
+                .load(Uri.parse(news.get(position).getImage()))
                 .fit().centerCrop() // will explain later
                 .placeholder(R.drawable.loading_image)
                 .error(R.drawable.esn_uex_color)
@@ -90,8 +99,9 @@ public class NewsList_Adapter extends RecyclerView.Adapter<NewsList_Adapter.NewV
         }
     }
 
-    public NewsList_Adapter(List<NewEntity> news, Context context) {
+    public NewsList_Adapter(List<NewEntity> news, Context context, New_Item_Listener new_item_listener) {
         this.context = context;
         this.news = news;
+        this.new_item_listener = new_item_listener;
     }
 }

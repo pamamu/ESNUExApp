@@ -21,6 +21,7 @@
 package es.pablomacias.esnuex_app.ui.main.adapter;
 
 import android.content.Context;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -69,7 +70,7 @@ public class EtcList_Adapter extends RecyclerView.Adapter<EtcList_Adapter.EtcVie
         ImageView imageView = holder.image;
         Picasso
                 .with(context)
-                .load(objets.get(position).getImage())
+                .load(Uri.parse(objets.get(position).getImage()))
                 .fit().centerCrop() // will explain later
                 .placeholder(R.drawable.loading_image)
                 .error(R.drawable.event_ticket)

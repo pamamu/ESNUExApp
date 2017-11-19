@@ -22,11 +22,22 @@ package es.pablomacias.esnuex_app.ui.main.presenter;
 
 import android.content.Context;
 
+import es.pablomacias.esnuex_app.data.repository.EventRepository;
+import es.pablomacias.esnuex_app.data.repository.PartnerRepository;
+import es.pablomacias.esnuex_app.data.repository.TripRepository;
+
 /**
  * Created by pablomaciasmu on 17/11/17.
  */
 
 public class List_Presenter {
+    private static final String TAG = List_Presenter.class.getSimpleName();
     private Context context;
+    private PartnerRepository partnerRepository;
+    private EventRepository eventRepository;
+    private TripRepository tripRepository;
+
+
+
 
 }

@@ -32,9 +32,9 @@ import retrofit2.Response;
 
 public interface TripServiceInteractor {
     interface CallBackListener {
-        void onResponse(Call<List<TripEntity>> call, Response<List<TripEntity>> response);
+        void onResponseTrip(Call<List<TripEntity>> call, Response<List<TripEntity>> response);
 
-        void onFailure(Call<List<TripEntity>> call, Throwable t);
+        void onFailureTrip(Call<List<TripEntity>> call, Throwable t);
 
     }
 

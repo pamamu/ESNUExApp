@@ -39,9 +39,17 @@ public class NewRespository implements Repository<NewEntity> {
         initRepository();
     }
 
-    private void initRepository() {
-//        appDatabase.newDao().truncateTable();
+    private void resetRepository() {
+        appDatabase.newDao().truncateTable();
+
+    }
+
+    public void initRepository() {
         appDatabase.newDao().insertAll(DataGenerator.generateNews());
+    }
+
+    public void initRepositoryByData(List<NewEntity> list) {
+        appDatabase.newDao().insertAll(list);
     }
 
     public static NewRespository getInstance(final AppDatabase appDatabase) {

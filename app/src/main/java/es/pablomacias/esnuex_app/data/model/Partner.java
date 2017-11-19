@@ -20,8 +20,6 @@
 
 package es.pablomacias.esnuex_app.data.model;
 
-import android.net.Uri;
-
 /**
  * Created by pablomaciasmu on 13/11/17.
  */
@@ -40,6 +38,6 @@ public interface Partner {
 
     int getDelegation();
 
-    Uri getImage();
+    String getImage();
 
 }

@@ -50,12 +50,12 @@ public class TripService implements TripServiceInteractor {
             @Override
             public void onResponse(Call<List<TripEntity>> call, Response<List<TripEntity>> response) {
                 if (response.isSuccessful())
-                    callBackListener.onResponse(call, response);
+                    callBackListener.onResponseTrip(call, response);
             }
 
             @Override
             public void onFailure(Call<List<TripEntity>> call, Throwable t) {
-                callBackListener.onFailure(call, t);
+                callBackListener.onFailureTrip(call, t);
             }
         });
     }

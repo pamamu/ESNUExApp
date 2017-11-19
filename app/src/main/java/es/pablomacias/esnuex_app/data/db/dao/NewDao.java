@@ -40,7 +40,7 @@ public interface NewDao {
     @Query("DELETE FROM New")
     void truncateTable();
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertAll(List<NewEntity> newEntities);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
