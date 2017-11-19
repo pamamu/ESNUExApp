@@ -39,7 +39,7 @@ public class NewRespository implements Repository<NewEntity> {
         initRepository();
     }
 
-    private void resetRepository() {
+    public void resetRepository() {
         appDatabase.newDao().truncateTable();
 
     }

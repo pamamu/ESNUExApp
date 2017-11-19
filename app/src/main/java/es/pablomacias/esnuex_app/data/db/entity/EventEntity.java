@@ -26,10 +26,6 @@ import android.arch.persistence.room.PrimaryKey;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import es.pablomacias.esnuex_app.data.model.Event;
 
 /**
@@ -53,8 +49,8 @@ public class EventEntity implements Event, EtcType {
     @SerializedName("imagen")
     private String image;
     @ColumnInfo(name = "fecha_inicio")
-    @SerializedName("fecha-inicio")
-    private Date dateTime;
+    @SerializedName("fecha_inicio")
+    private String dateTime;
     @ColumnInfo(name = "descripcion")
     @SerializedName("descripcion")
     private String description;
@@ -96,8 +92,7 @@ public class EventEntity implements Event, EtcType {
 
     @Override
     public String getSubtitle() {
-        DateFormat df = new SimpleDateFormat("EEEE, dd/MMMM/yyyy 'a las' HH:mm:ss");
-        return df.format(this.dateTime);
+        return this.dateTime;
     }
 
     public void setDelegation(int delegation) {
@@ -105,11 +100,11 @@ public class EventEntity implements Event, EtcType {
     }
 
     @Override
-    public Date getDateTime() {
+    public String getDateTime() {
         return dateTime;
     }
 
-    public void setDateTime(Date datetime) {
+    public void setDateTime(String datetime) {
         this.dateTime = datetime;
     }
 
@@ -131,7 +126,7 @@ public class EventEntity implements Event, EtcType {
         this.image = image;
     }
 
-    public EventEntity(String name, String address, int delegation, String image, Date dateTime, String description) {
+    public EventEntity(String name, String address, int delegation, String image, String dateTime, String description) {
         this.name = name;
         this.address = address;
         this.delegation = delegation;

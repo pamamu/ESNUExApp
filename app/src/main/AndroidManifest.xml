@@ -33,8 +33,8 @@
         <activity
             android:name=".ui.main.activity.MainActivity"
             android:label="@string/title_home"
-            android:theme="@style/NoTittleBarTheme.NoActionBar"></activity>
-        <activity android:name=".ui.login.activity.SignupActivity"></activity>
+            android:theme="@style/NoTittleBarTheme.NoActionBar" />
+        <activity android:name=".ui.login.activity.SignupActivity" />
         <activity android:name=".ui.splash.activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -42,7 +42,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.detail.activity.DetailActivity"></activity>
+        <activity android:name=".ui.detail.activity.DetailActivity" />
+        <activity android:name=".ui.management.activity.ManagementActivity"></activity>
     </application>
 
 </manifest>

@@ -26,10 +26,6 @@ import android.arch.persistence.room.PrimaryKey;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import es.pablomacias.esnuex_app.data.model.Trip;
 
 /**
@@ -53,7 +49,7 @@ public class TripEntity implements Trip, EtcType {
     private String image;
     @ColumnInfo(name = "fecha")
     @SerializedName("fecha")
-    private Date dateTime;
+    private String dateTime;
     @ColumnInfo(name = "descripcion")
     @SerializedName("descripcion")
     private String description;
@@ -61,7 +57,7 @@ public class TripEntity implements Trip, EtcType {
     public TripEntity() {
     }
 
-    public TripEntity(int id, String name, String place, int delegation, String image, Date dateTime, String description) {
+    public TripEntity(int id, String name, String place, int delegation, String image, String dateTime, String description) {
         this.id = id;
         this.name = name;
         this.place = place;
@@ -110,8 +106,7 @@ public class TripEntity implements Trip, EtcType {
 
     @Override
     public String getSubtitle() {
-        DateFormat df = new SimpleDateFormat("EEEE, dd/MMMM/yyyy 'a las' HH:mm:ss");
-        return df.format(this.dateTime);
+        return this.dateTime;
     }
 
     public void setDelegation(int delegation) {
@@ -128,11 +123,11 @@ public class TripEntity implements Trip, EtcType {
     }
 
     @Override
-    public Date getDateTime() {
+    public String getDateTime() {
         return dateTime;
     }
 
-    public void setDateTime(Date dateTime) {
+    public void setDateTime(String dateTime) {
         this.dateTime = dateTime;
     }
 

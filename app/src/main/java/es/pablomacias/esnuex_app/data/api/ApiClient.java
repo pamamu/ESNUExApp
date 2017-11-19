@@ -57,6 +57,7 @@ public class ApiClient {
             Gson gson = new GsonBuilder()
                     .registerTypeAdapter(Uri.class, new UriSerializer())
                     .registerTypeAdapter(Date.class, new DateDeserializer())
+                    .setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
                     .create();
             Retrofit retrofit = new Retrofit.Builder()
                     .baseUrl(BASE_URL)

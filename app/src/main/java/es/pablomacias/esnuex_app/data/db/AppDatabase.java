@@ -45,7 +45,7 @@ import es.pablomacias.esnuex_app.data.db.entity.TripEntity;
 
 @Database(entities = {DelegationEntity.class, EventEntity.class, NewEntity.class,
         PartnerEntity.class, TripEntity.class},
-        version = 2)
+        version = 3)
 @TypeConverters({DateConverter.class, UriConverter.class})
 public abstract class AppDatabase extends RoomDatabase {
     private static AppDatabase INSTANCE;

@@ -38,7 +38,7 @@ public class PartnerRepository implements Repository<PartnerEntity> {
         resetRepository();
     }
 
-    private void resetRepository() {
+    public void resetRepository() {
         appDatabase.partnerDao().truncateTable();
     }
 

@@ -26,8 +26,6 @@ import android.arch.persistence.room.PrimaryKey;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.util.Date;
-
 import es.pablomacias.esnuex_app.data.model.New;
 
 /**
@@ -49,7 +47,7 @@ public class NewEntity implements New {
     private String image;
     @SerializedName("fecha")
     @ColumnInfo(name = "date")
-    private Date date;
+    private String date;
     @SerializedName("link")
     @ColumnInfo(name = "link")
     private String link;
@@ -58,7 +56,7 @@ public class NewEntity implements New {
     public NewEntity() {
     }
 
-    public NewEntity(int id, String title, String image, Date date, String link) {
+    public NewEntity(int id, String title, String image, String date, String link) {
         this.id = id;
         this.title = title;
         this.image = image;
@@ -66,14 +64,14 @@ public class NewEntity implements New {
         this.link = link;
     }
 
-    public NewEntity(int id, String title, String image, Date date) {
+    public NewEntity(int id, String title, String image, String date) {
         this.id = id;
         this.title = title;
         this.image = image;
         this.date = date;
     }
 
-    public NewEntity(String title, String image, Date date) {
+    public NewEntity(String title, String image, String date) {
         this.title = title;
         this.image = image;
         this.date = date;
@@ -107,11 +105,11 @@ public class NewEntity implements New {
     }
 
     @Override
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 

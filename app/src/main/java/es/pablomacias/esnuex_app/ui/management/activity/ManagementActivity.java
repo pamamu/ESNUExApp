@@ -18,23 +18,15 @@
  *
  */
 
-package es.pablomacias.esnuex_app.data.model;
+package es.pablomacias.esnuex_app.ui.management.activity;
 
-/**
- * Created by pablomaciasmu on 13/11/17.
- */
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
-public interface New {
+public class ManagementActivity extends AppCompatActivity {
 
-    int getId();
-
-    String getTitle();
-
-    String getBody();
-
-    String getImage();
-
-    String getDate();
-
-    String getLink();
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
 }

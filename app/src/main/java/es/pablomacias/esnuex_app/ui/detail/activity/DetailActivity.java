@@ -77,6 +77,7 @@ public class DetailActivity extends BaseActivity implements Detail_interface {
 
     }
 
+
     @Override
     public int getLayoutId() {
         return R.layout.activity_details;
@@ -109,6 +110,15 @@ public class DetailActivity extends BaseActivity implements Detail_interface {
     @Override
     public void setPlace(String place) {
         this.location.setText(place);
+
+    }
+
+    @Override
+    public void setButtonVisible(boolean buttonVisible) {
+        if (buttonVisible)
+            floatingActionButton.setVisibility(View.VISIBLE);
+        else
+            floatingActionButton.setVisibility(View.INVISIBLE);
 
     }
 }

@@ -31,10 +31,7 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.List;
-import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -60,8 +57,7 @@ public class NewsList_Adapter extends RecyclerView.Adapter<NewsList_Adapter.NewV
     @Override
     public void onBindViewHolder(NewViewHolder holder, final int position) {
         holder.title.setText(news.get(position).getTitle());
-        DateFormat df = new SimpleDateFormat("EEEE, MMM dd, yyyy", Locale.UK);
-        holder.time.setText(df.format(news.get(position).getDate()));
+        holder.time.setText(news.get(position).getDate());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

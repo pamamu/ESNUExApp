@@ -38,7 +38,7 @@ public class EventRepository implements Repository<EventEntity> {
         resetRepository();
     }
 
-    private void resetRepository() {
+    public void resetRepository() {
         appDatabase.eventDao().truncateTable();
     }
 

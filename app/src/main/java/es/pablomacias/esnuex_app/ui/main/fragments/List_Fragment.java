@@ -32,8 +32,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 import butterknife.BindView;
@@ -41,7 +39,6 @@ import butterknife.ButterKnife;
 import es.pablomacias.esnuex_app.R;
 import es.pablomacias.esnuex_app.common.utils.FragmentsEnum;
 import es.pablomacias.esnuex_app.data.db.entity.EtcType;
-import es.pablomacias.esnuex_app.data.db.entity.EventEntity;
 import es.pablomacias.esnuex_app.ui.detail.activity.DetailActivity;
 import es.pablomacias.esnuex_app.ui.main.activity.Etc_Item_Listener;
 import es.pablomacias.esnuex_app.ui.main.adapter.EtcList_Adapter;
@@ -51,7 +48,7 @@ import es.pablomacias.esnuex_app.ui.main.presenter.List_Presenter;
  * Created by pablomaciasmu on 16/11/17.
  */
 
-public class List_Fragment extends Fragment implements Etc_Item_Listener {
+public class List_Fragment extends Fragment implements Etc_Item_Listener, EtcListInterface {
     private static final String TAG = List_Fragment.class.getName();
 
     @BindView(R.id.etc_list)
@@ -88,6 +85,7 @@ public class List_Fragment extends Fragment implements Etc_Item_Listener {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Bundle bundle = getArguments();
+        listPresenter = new List_Presenter(context, this);
         if (bundle != null) {
             Log.i(TAG, "onCreate: " + bundle.getString(fragmentType));
             this.type = bundle.getString(fragmentType);
@@ -102,21 +100,23 @@ public class List_Fragment extends Fragment implements Etc_Item_Listener {
         View view = inflater.inflate(R.layout.fragment_etc_list, container, false);
         ButterKnife.bind(this, view);
 
-        //List<EtcType> elements =
+        List<EtcType> elements = listPresenter.getElements(this.type, this.delegation);
 
+
+/*
         List<EtcType> elements = new ArrayList<>();
         elements.add(new EventEntity("Evento 1", "Calle los Perdigones", 1,
                 "http://www.hdfondos.eu/preview/get_photo/437341/1920/1080",
-                Calendar.getInstance().getTime(), "Descripcion"));
+                Calendar.getInstance().getTime().toString(), "Descripcion"));
 
         elements.add(new EventEntity("Evento 2", "Calle los Perdigones", 1,
                 "http://www.hdfondos.eu/preview/get_photo/437341/1920/1080",
-                Calendar.getInstance().getTime(), "Descripcion"));
+                Calendar.getInstance().getTime().toString(), "Descripcion"));
 
         elements.add(new EventEntity("Evento 3", "Calle los Perdigones", 1,
                 "http://www.hdfondos.eu/preview/get_photo/437341/1920/1080",
-                Calendar.getInstance().getTime(), "Descripcion"));
-
+                Calendar.getInstance().getTime().toString(), "Descripcion"));
+*/
         item_list.setHasFixedSize(true);
         manager = new LinearLayoutManager(getContext());
         item_list.setLayoutManager(manager);

@@ -20,6 +20,7 @@
 
 package es.pablomacias.esnuex_app.ui.detail.presenter;
 
+import android.annotation.SuppressLint;
 import android.content.ContentUris;
 import android.content.Context;
 import android.content.Intent;
@@ -32,6 +33,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Objects;
 
 import es.pablomacias.esnuex_app.ui.detail.activity.Detail_interface;
 
@@ -54,6 +56,7 @@ public class DetailPresenter {
         createEtcObject(intent);
     }
 
+    @SuppressLint("NewApi")
     private void createEtcObject(Intent intent) {
         information = intent.getStringArrayExtra("information");
         received = information.length > 0;
@@ -63,14 +66,18 @@ public class DetailPresenter {
             detail_interface.setTitle(information[1]);
             detail_interface.setSubtitle(information[2]);
             detail_interface.setDescription(information[3]);
-            getDate(information[3]);
+            getDate(information[2]);
+            type = information[5];
+            if (Objects.equals(type, "PARTNER"))
+                detail_interface.setButtonVisible(false);
             detail_interface.setPlace(information[4]);
         }
     }
 
+
     private void getDate(String s) {
         try {
-            DateFormat df = new SimpleDateFormat("EEEE, dd/MMMM/yyyy 'a las' HH:mm:ss");
+            DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             date = df.parse(s);
         } catch (ParseException e) {
             date = Calendar.getInstance().getTime();

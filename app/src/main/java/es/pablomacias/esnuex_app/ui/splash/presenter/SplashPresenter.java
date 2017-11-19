@@ -76,14 +76,22 @@ public class SplashPresenter implements
     public void goToNextActivity() {
         NetworkUtil.newInstance(context);
         newRepository = NewRespository.getInstance(AppDatabase.getAppDatabase(context));
+        newRepository.resetRepository();
         eventRepository = EventRepository.getInstance(AppDatabase.getAppDatabase(context));
+        eventRepository.resetRepository();
         tripRepository = TripRepository.getInstance(AppDatabase.getAppDatabase(context));
+        tripRepository.resetRepository();
         partnerRepository = PartnerRepository.getInstance(AppDatabase.getAppDatabase(context));
+        partnerRepository.resetRepository();
         if (!NetworkUtil.isConnected()) { //NO HAY INTERNET
             newRepository.initRepository();
+            loaded();
             eventRepository.initRepository();
+            loaded();
             partnerRepository.initRepository();
+            loaded();
             tripRepository.initRepository();
+            loaded();
         } else { //HAY INTERNET
             Log.i(TAG, "goToNextActivity: CREANDO SERVICIOS");
             EventService eventService = new EventService(this);

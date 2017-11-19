@@ -20,8 +20,6 @@
 
 package es.pablomacias.esnuex_app.data.model;
 
-import java.util.Date;
-
 /**
  * Created by pablomaciasmu on 13/11/17.
  */
@@ -35,7 +33,7 @@ public interface Event {
 
     int getDelegation();
 
-    Date getDateTime();
+    String getDateTime();
 
     String getDescription();
 

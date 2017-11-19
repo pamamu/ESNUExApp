@@ -18,23 +18,11 @@
  *
  */
 
-package es.pablomacias.esnuex_app.data.model;
+package es.pablomacias.esnuex_app.ui.management.presenter;
 
 /**
- * Created by pablomaciasmu on 13/11/17.
+ * Created by pablomaciasmu on 19/11/17.
  */
 
-public interface New {
-
-    int getId();
-
-    String getTitle();
-
-    String getBody();
-
-    String getImage();
-
-    String getDate();
-
-    String getLink();
+public class ManagementPresenter {
 }

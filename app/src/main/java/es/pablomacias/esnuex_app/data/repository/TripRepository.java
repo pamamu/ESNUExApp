@@ -38,7 +38,7 @@ public class TripRepository implements Repository<TripEntity> {
         resetRepository();
     }
 
-    private void resetRepository() {
+    public void resetRepository() {
         appDatabase.tripDao().truncateTable();
     }
 

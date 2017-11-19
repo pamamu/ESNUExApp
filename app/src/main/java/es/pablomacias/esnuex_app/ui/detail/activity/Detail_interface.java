@@ -37,4 +37,6 @@ public interface Detail_interface {
 
     void setPlace(String place);
 
+    void setButtonVisible(boolean buttonVisible);
+
 }

@@ -169,7 +169,7 @@ public class MainActivity extends BaseActivity implements MainInterface {
             ft.replace(R.id.main_content_frame, new Home_Fragment());
             ft.commit();
         } else
-            super.onBackPressed();
+            finish();
     }
 
     @Override
