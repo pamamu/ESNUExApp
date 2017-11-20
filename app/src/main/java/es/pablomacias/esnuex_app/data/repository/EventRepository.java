@@ -60,7 +60,7 @@ public class EventRepository implements Repository<EventEntity> {
 
     @Override
     public List<EventEntity> getAll() {
-        return null;
+        return appDatabase.eventDao().loadAll();
     }
 
     @Override

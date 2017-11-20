@@ -18,24 +18,13 @@
  *
  */
 
-package es.pablomacias.esnuex_app.ui.main.activity;
-
-import android.support.v4.app.Fragment;
+package es.pablomacias.esnuex_app.ui.management.activity;
 
 /**
- * Created by pablomaciasmu on 15/11/17.
+ * Created by pablomaciasmu on 19/11/17.
  */
 
-public interface MainInterface {
-    void openFragment(Fragment fragment);
-
-    void setTitle(CharSequence title);
-
-    void closeDrawer();
-
-    void openSignUpActivity();
-
+public interface ManagementInterface {
     void updateUI();
 
-    void openShare();
 }

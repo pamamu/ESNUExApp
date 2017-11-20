@@ -80,6 +80,7 @@ public class MainPresenter {
                 mainInterface.setTitle(link_pressed.getName());
                 break;
             case 4: //Contact
+                mainInterface.openShare();
                 return;
             case 5:
                 if (userPreferencesUtil.getUser() != null) { //Management

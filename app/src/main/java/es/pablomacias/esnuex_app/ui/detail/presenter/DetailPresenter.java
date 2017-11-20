@@ -91,6 +91,7 @@ public class DetailPresenter {
             ContentUris.appendId(builder, date.getTime());
             Toast.makeText(context, "Adding event to Calendar App", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(Intent.ACTION_EDIT);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             intent.setType("vnd.android.cursor.item/event");
             intent.putExtra("beginTime", date.getTime());
             intent.putExtra("title", information[1]);
@@ -103,6 +104,7 @@ public class DetailPresenter {
     public void goTo() {
         Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
                 Uri.parse("google.navigation:q=" + information[4]));
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
     }
 

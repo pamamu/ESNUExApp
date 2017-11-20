@@ -21,12 +21,57 @@
 package es.pablomacias.esnuex_app.ui.management.activity;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 
-public class ManagementActivity extends AppCompatActivity {
+import java.util.List;
+
+import butterknife.BindView;
+import es.pablomacias.esnuex_app.R;
+import es.pablomacias.esnuex_app.common.BaseActivity;
+import es.pablomacias.esnuex_app.data.db.entity.EtcType;
+import es.pablomacias.esnuex_app.ui.main.activity.Etc_Item_Listener;
+import es.pablomacias.esnuex_app.ui.main.adapter.EtcList_Adapter;
+import es.pablomacias.esnuex_app.ui.management.presenter.ManagementPresenter;
+
+public class ManagementActivity extends BaseActivity implements ManagementInterface, Etc_Item_Listener {
+
+    private ManagementPresenter managementPresenter;
+    RecyclerView.LayoutManager manager;
+    private EtcList_Adapter adapter;
+
+
+    @BindView(R.id.etc_list)
+    RecyclerView item_list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        managementPresenter = new ManagementPresenter(getApplicationContext(), this, getIntent());
+
+        updateUI();
+
+
+    }
+
+    @Override
+    public int getLayoutId() {
+        return R.layout.fragment_etc_list;
+    }
+
+    @Override
+    public void itemclicked(EtcType item) {
+        managementPresenter.removeItem(item);
+    }
+
+    @Override
+    public void updateUI() {
+        List<EtcType> elements = managementPresenter.getElements();
+
+        item_list.setHasFixedSize(true);
+        manager = new LinearLayoutManager(getApplicationContext());
+        item_list.setLayoutManager(manager);
+        adapter = new EtcList_Adapter(elements, getApplicationContext(), this);
+        item_list.setAdapter(adapter);
     }
 }

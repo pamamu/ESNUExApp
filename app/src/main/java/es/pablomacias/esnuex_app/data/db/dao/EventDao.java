@@ -39,6 +39,9 @@ public interface EventDao {
     @Query("SELECT * FROM Event where delegacion = :delegation")
     List<EventEntity> loadAllsByDelegation(int delegation);
 
+    @Query("SELECT * FROM Event")
+    List<EventEntity> loadAll();
+
     @Insert
     void insert(EventEntity eventEntity);
 

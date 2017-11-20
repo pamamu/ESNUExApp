@@ -18,44 +18,51 @@
   ~
   -->
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="75dp">
+    android:layout_height="75dp"
+    android:orientation="horizontal"
+    android:padding="5dp">
 
-    <TextView
-        android:id="@+id/new_text"
-        android:layout_width="260dp"
-        android:layout_height="45dp"
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
         android:layout_margin="5dp"
-        android:ellipsize="end"
-        android:maxLines="2"
-        android:paddingLeft="10dp"
-        android:textStyle="bold"
-        android:textColor="@color/white"
-        android:textSize="@dimen/body"
-        tools:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaasssssssssaaaaaaaa" />
+        android:layout_weight="5"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/time_new"
-        android:layout_width="260dp"
-        android:layout_height="20dp"
-        android:layout_alignBottom="@+id/new_image"
-        android:layout_alignLeft="@+id/new_text"
-        android:layout_alignStart="@+id/new_text"
-        android:paddingLeft="15dp"
-        android:textColor="@color/grey"
-        tools:text="Hace 2 horas" />
+        <TextView
+            android:id="@+id/new_text"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textColor="@color/white"
+            android:textSize="@dimen/body"
+            android:textStyle="bold"
+            tools:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaa" />
+
+        <TextView
+            android:id="@+id/time_new"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:textColor="@color/grey"
+            tools:text="Hace 2 horas" />
+
+    </LinearLayout>
 
     <ImageView
         android:id="@+id/new_image"
-        android:layout_width="100dp"
-        android:layout_height="60dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
         android:layout_marginEnd="18dp"
+        android:layout_marginLeft="10dp"
         android:layout_marginRight="18dp"
+        android:layout_marginStart="10dp"
+        android:layout_weight="2"
         tools:src="@drawable/esn_uex_color" />
 
-</RelativeLayout>
+</LinearLayout>

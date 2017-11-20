@@ -43,7 +43,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.detail.activity.DetailActivity" />
-        <activity android:name=".ui.management.activity.ManagementActivity"></activity>
+        <activity android:name=".ui.management.activity.ManagementActivity" />
+        <activity android:name=".ui.management.activity.ManagementActivityForm"></activity>
     </application>
 
 </manifest>

@@ -29,11 +29,15 @@
     app:layout_collapseParallaxMultiplier="0.3">
 
     <TextView
+        android:paddingRight="50dp"
         android:id="@+id/view_title"
         style="@style/event_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/Event1" />
+        android:text="@string/Event1"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:paddingEnd="50dp" />
 
     <TextView
         android:id="@+id/view_subtitle"

@@ -28,9 +28,6 @@ import java.util.List;
 
 import es.pablomacias.esnuex_app.data.db.AppDatabase;
 import es.pablomacias.esnuex_app.data.db.entity.EtcType;
-import es.pablomacias.esnuex_app.data.db.entity.EventEntity;
-import es.pablomacias.esnuex_app.data.db.entity.PartnerEntity;
-import es.pablomacias.esnuex_app.data.db.entity.TripEntity;
 import es.pablomacias.esnuex_app.data.repository.EventRepository;
 import es.pablomacias.esnuex_app.data.repository.PartnerRepository;
 import es.pablomacias.esnuex_app.data.repository.TripRepository;
@@ -59,47 +56,17 @@ public class List_Presenter {
 
     public List<EtcType> getElements(String type, int delegation) {
         Log.d(TAG, "getElements() called with: type = [" + type + "], delegation = [" + delegation + "]");
-        List<EtcType> etcTypes;
+        List<EtcType> etcTypes = new ArrayList<>();
         switch (type) {
             case "TRIP":
-                etcTypes = convertListTrips(tripRepository.getByDelegation(delegation));
+                etcTypes.addAll(tripRepository.getByDelegation(delegation));
                 break;
             case "EVENT":
-                etcTypes = convertListEvent(eventRepository.getByDelegation(delegation));
+                etcTypes.addAll(eventRepository.getByDelegation(delegation));
                 break;
             case "PARTNER":
-                etcTypes = convertListPartner(partnerRepository.getByDelegation(delegation));
+                etcTypes.addAll(partnerRepository.getByDelegation(delegation));
                 break;
-            default:
-                etcTypes = new ArrayList<>();
-                break;
-        }
-        return etcTypes;
-    }
-
-    private List<EtcType> convertListPartner(List<PartnerEntity> list) {
-        List<EtcType> etcTypes = new ArrayList<>();
-        for (PartnerEntity partnerEntity :
-                list) {
-            etcTypes.add(partnerEntity);
-        }
-        return etcTypes;
-    }
-
-    private List<EtcType> convertListEvent(List<EventEntity> list) {
-        List<EtcType> etcTypes = new ArrayList<>();
-        for (EventEntity eventEntity :
-                list) {
-            etcTypes.add(eventEntity);
-        }
-        return etcTypes;
-    }
-
-    private List<EtcType> convertListTrips(List<TripEntity> list) {
-        List<EtcType> etcTypes = new ArrayList<>();
-        for (TripEntity tripEntity :
-                list) {
-            etcTypes.add(tripEntity);
         }
         return etcTypes;
     }

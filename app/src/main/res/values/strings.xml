@@ -51,6 +51,15 @@
     <string name="movin">Mov\'in Europe</string>
     <string name="excha">ExchangeAbility</string>
     <string name="eis">Erasmus in Schools</string>
+    <string name="form_title">Title</string>
+    <string name="form_description">Description</string>
+    <string name="form_place">Location</string>
+    <string name="form_date">Date</string>
+    <string name="form_time">Time</string>
+    <string name="error_form_title">Enter the title</string>
+    <string name="error_form_description">Enter the description</string>
+    <string name="error_form_date">Enter the date</string>
+    <string name="error_form_time">Enter the time</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -187,4 +196,5 @@
     <string name="badajoz">Badajoz</string>
     <string name="caceres">Cáceres</string>
     <string name="merida">Mérida</string>
+    <string name="confirm">Confirm</string>
 </resources>

@@ -59,7 +59,7 @@ public class TripRepository implements Repository<TripEntity> {
 
     @Override
     public List<TripEntity> getAll() {
-        return null;
+        return appDatabase.tripDao().loadAll();
     }
 
     @Override
@@ -84,4 +84,5 @@ public class TripRepository implements Repository<TripEntity> {
     public List<TripEntity> getByDelegation(int del) {
         return appDatabase.tripDao().loadAllsByDelegation(del);
     }
+
 }

@@ -102,21 +102,6 @@ public class List_Fragment extends Fragment implements Etc_Item_Listener, EtcLis
 
         List<EtcType> elements = listPresenter.getElements(this.type, this.delegation);
 
-
-/*
-        List<EtcType> elements = new ArrayList<>();
-        elements.add(new EventEntity("Evento 1", "Calle los Perdigones", 1,
-                "http://www.hdfondos.eu/preview/get_photo/437341/1920/1080",
-                Calendar.getInstance().getTime().toString(), "Descripcion"));
-
-        elements.add(new EventEntity("Evento 2", "Calle los Perdigones", 1,
-                "http://www.hdfondos.eu/preview/get_photo/437341/1920/1080",
-                Calendar.getInstance().getTime().toString(), "Descripcion"));
-
-        elements.add(new EventEntity("Evento 3", "Calle los Perdigones", 1,
-                "http://www.hdfondos.eu/preview/get_photo/437341/1920/1080",
-                Calendar.getInstance().getTime().toString(), "Descripcion"));
-*/
         item_list.setHasFixedSize(true);
         manager = new LinearLayoutManager(getContext());
         item_list.setLayoutManager(manager);

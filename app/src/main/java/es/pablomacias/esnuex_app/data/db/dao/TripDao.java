@@ -39,6 +39,9 @@ public interface TripDao {
     @Query("SELECT * FROM Trip where delegacion =:delegation")
     List<TripEntity> loadAllsByDelegation(int delegation);
 
+    @Query("SELECT * FROM Trip")
+    List<TripEntity> loadAll();
+
     @Insert
     void insert(TripEntity tripEntity);
 

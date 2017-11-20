@@ -95,9 +95,9 @@ public class MainActivity extends BaseActivity implements MainInterface {
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
-
-        updateUI();
-
+        if (savedInstanceState == null)
+            updateUI();
+        updateDrawer();
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -188,15 +188,26 @@ public class MainActivity extends BaseActivity implements MainInterface {
 
 
     public void updateUI() {
-        drawer.closeDrawers();
-        menuLinkAdapter = new MenuLinkAdapter(this, R.layout.drawer_list_item, drawerPresenter.getLinks());
-        listView.setAdapter(menuLinkAdapter);
+        updateDrawer();
         setTitle(getString(R.string.app_name));
         openFragment(new Home_Fragment());
         viewGroup.invalidate();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             updateUser();
         }
+    }
+
+    @Override
+    public void openShare() {
+        Intent browse = new Intent(Intent.ACTION_VIEW, Uri.parse("http://esnuex.org/contact"));
+        browse.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(browse);
+    }
+
+    private void updateDrawer() {
+        drawer.closeDrawers();
+        menuLinkAdapter = new MenuLinkAdapter(this, R.layout.drawer_list_item, drawerPresenter.getLinks());
+        listView.setAdapter(menuLinkAdapter);
     }
 
 
