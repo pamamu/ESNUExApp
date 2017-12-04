@@ -36,7 +36,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -99,13 +98,11 @@ public class MainActivity extends BaseActivity implements MainInterface {
             updateUI();
         updateDrawer();
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                listView.setItemChecked(i, true);
-                mainPresenter.onLinkClick(i);
-            }
-        });
+        listView.setOnItemClickListener(((adapterView, view, i, l) -> {
+            listView.setItemChecked(i, true);
+            mainPresenter.onLinkClick(i);
+        }));
+
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)

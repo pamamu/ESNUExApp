@@ -95,7 +95,7 @@ public class Management_Fragment extends Fragment {
     @OnClick(R.id.add_but2)
     public void openFormManagementAddEvent() {
         Intent intent = new Intent(context, ManagementActivityForm.class);
-        intent.putExtra("action", "UPDATE");
+        intent.putExtra("action", "NEW");
         intent.putExtra("type", "EVENT");
         startActivity(intent);
     }
@@ -112,7 +112,7 @@ public class Management_Fragment extends Fragment {
     @OnClick(R.id.edit_but2)
     public void openFormManagementEditEvent() {
         Intent intent = new Intent(context, ManagementActivityForm.class);
-        intent.putExtra("action", "ADD");
+        intent.putExtra("action", "EDIT");
         intent.putExtra("type", "EVENT");
         startActivity(intent);
     }

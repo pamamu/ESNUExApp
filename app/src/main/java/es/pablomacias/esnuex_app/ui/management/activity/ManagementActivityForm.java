@@ -23,12 +23,11 @@ package es.pablomacias.esnuex_app.ui.management.activity;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.TimePicker;
 
 import java.util.Calendar;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -64,16 +63,7 @@ public class ManagementActivityForm extends BaseActivity implements ManagementFo
         mMonth = c.get(Calendar.MONTH);
         mDay = c.get(Calendar.DAY_OF_MONTH);
         DatePickerDialog datePickerDialog = new DatePickerDialog(this,
-                new DatePickerDialog.OnDateSetListener() {
-
-                    @Override
-                    public void onDateSet(DatePicker view, int year,
-                                          int monthOfYear, int dayOfMonth) {
-
-                        editText.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
-
-                    }
-                }, mYear, mMonth, mDay);
+                (view, year, monthOfYear, dayOfMonth) -> editText.setText(String.format(Locale.UK, "%d/%d/%d", dayOfMonth, monthOfYear + 1, year)), mYear, mMonth, mDay);
 
         datePickerDialog.show();
     }
@@ -87,15 +77,7 @@ public class ManagementActivityForm extends BaseActivity implements ManagementFo
 
         // Launch Time Picker Dialog
         TimePickerDialog timePickerDialog = new TimePickerDialog(this,
-                new TimePickerDialog.OnTimeSetListener() {
-
-                    @Override
-                    public void onTimeSet(TimePicker view, int hourOfDay,
-                                          int minute) {
-
-                        timeText.setText(hourOfDay + ":" + minute);
-                    }
-                }, mHour, mMinute, false);
+                (view, hourOfDay, minute) -> timeText.setText(hourOfDay + ":" + minute), mHour, mMinute, false);
         timePickerDialog.show();
     }
 
