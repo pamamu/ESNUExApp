@@ -22,7 +22,8 @@
     <dimen name="TitleText">20sp</dimen>
     <dimen name="TitleInfo">25sp</dimen>
     <dimen name="Subtitle">17sp</dimen>
-    <dimen name="body">14sp</dimen>
+    <dimen name="body">15sp</dimen>
+    <dimen name="body_content">19sp</dimen>
     <dimen name="profile_name">17sp</dimen>
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
