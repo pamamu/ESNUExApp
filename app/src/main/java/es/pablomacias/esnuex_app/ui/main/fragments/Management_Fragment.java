@@ -35,7 +35,6 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import es.pablomacias.esnuex_app.R;
 import es.pablomacias.esnuex_app.ui.management.activity.ManagementActivity;
-import es.pablomacias.esnuex_app.ui.management.activity.ManagementActivityForm;
 
 /**
  * Created by pablomaciasmu on 17/11/17.
@@ -44,16 +43,16 @@ import es.pablomacias.esnuex_app.ui.management.activity.ManagementActivityForm;
 public class Management_Fragment extends Fragment {
     private static final String TAG = Management_Fragment.class.getSimpleName();
 
-    @BindView(R.id.add_but1)
-    ImageView add_1;
-    @BindView(R.id.edit_but1)
-    ImageView edit_1;
+    //    @BindView(R.id.add_but1)
+//    ImageView add_1;
+//    @BindView(R.id.edit_but1)
+//    ImageView edit_1;
     @BindView(R.id.remove_but1)
     ImageView remove_1;
-    @BindView(R.id.add_but2)
-    ImageView add_2;
-    @BindView(R.id.edit_but2)
-    ImageView edit_2;
+    //    @BindView(R.id.add_but2)
+//    ImageView add_2;
+//    @BindView(R.id.edit_but2)
+//    ImageView edit_2;
     @BindView(R.id.remove_but2)
     ImageView remove_2;
     Context context;
@@ -84,38 +83,38 @@ public class Management_Fragment extends Fragment {
         startActivity(intent);
     }
 
-    @OnClick(R.id.add_but1)
-    public void openFormManagementAddTrip() {
-        Intent intent = new Intent(context, ManagementActivityForm.class);
-        intent.putExtra("action", "NEW");
-        intent.putExtra("type", "TRIP");
-        startActivity(intent);
-    }
+//    @OnClick(R.id.add_but1)
+//    public void openFormManagementAddTrip() {
+//        Intent intent = new Intent(context, ManagementActivityForm.class);
+//        intent.putExtra("action", "NEW");
+//        intent.putExtra("type", "TRIP");
+//        startActivity(intent);
+//    }
 
-    @OnClick(R.id.add_but2)
-    public void openFormManagementAddEvent() {
-        Intent intent = new Intent(context, ManagementActivityForm.class);
-        intent.putExtra("action", "NEW");
-        intent.putExtra("type", "EVENT");
-        startActivity(intent);
-    }
+//    @OnClick(R.id.add_but2)
+//    public void openFormManagementAddEvent() {
+//        Intent intent = new Intent(context, ManagementActivityForm.class);
+//        intent.putExtra("action", "NEW");
+//        intent.putExtra("type", "EVENT");
+//        startActivity(intent);
+//    }
 
 
-    @OnClick(R.id.edit_but1)
-    public void openFormManagementEditTrip() {
-        Intent intent = new Intent(context, ManagementActivityForm.class);
-        intent.putExtra("action", "EDIT");
-        intent.putExtra("type", "TRIP");
-        startActivity(intent);
-    }
+//    @OnClick(R.id.edit_but1)
+//    public void openFormManagementEditTrip() {
+//        Intent intent = new Intent(context, ManagementActivityForm.class);
+//        intent.putExtra("action", "EDIT");
+//        intent.putExtra("type", "TRIP");
+//        startActivity(intent);
+//    }
 
-    @OnClick(R.id.edit_but2)
-    public void openFormManagementEditEvent() {
-        Intent intent = new Intent(context, ManagementActivityForm.class);
-        intent.putExtra("action", "EDIT");
-        intent.putExtra("type", "EVENT");
-        startActivity(intent);
-    }
+//    @OnClick(R.id.edit_but2)
+//    public void openFormManagementEditEvent() {
+//        Intent intent = new Intent(context, ManagementActivityForm.class);
+//        intent.putExtra("action", "EDIT");
+//        intent.putExtra("type", "EVENT");
+//        startActivity(intent);
+//    }
 
 
 

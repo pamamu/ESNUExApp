@@ -20,6 +20,8 @@
 
 package es.pablomacias.esnuex_app.data.repository;
 
+import android.os.AsyncTask;
+
 import java.util.List;
 
 import es.pablomacias.esnuex_app.data.db.AppDatabase;
@@ -39,7 +41,8 @@ public class PartnerRepository implements Repository<PartnerEntity> {
     }
 
     public void resetRepository() {
-        appDatabase.partnerDao().truncateTable();
+        new resetDb(this.appDatabase).execute();
+//        appDatabase.partnerDao().truncateTable();
     }
 
     public void initRepository() {
@@ -83,5 +86,19 @@ public class PartnerRepository implements Repository<PartnerEntity> {
 
     public List<PartnerEntity> getByDelegation(int del) {
         return appDatabase.partnerDao().loadAllsByDelegation(del);
+    }
+
+    private static class resetDb extends AsyncTask<Void, Void, Void> {
+        private final AppDatabase mDb;
+
+        private resetDb(AppDatabase mDb) {
+            this.mDb = mDb;
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            mDb.partnerDao().truncateTable();
+            return null;
+        }
     }
 }

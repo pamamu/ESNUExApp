@@ -27,7 +27,7 @@ import java.util.List;
 
 import es.pablomacias.esnuex_app.data.db.AppDatabase;
 import es.pablomacias.esnuex_app.data.db.entity.NewEntity;
-import es.pablomacias.esnuex_app.data.repository.NewRespository;
+import es.pablomacias.esnuex_app.data.repository.NewRepository;
 import es.pablomacias.esnuex_app.ui.main.fragments.Home_Interface;
 
 /**
@@ -38,17 +38,17 @@ public class Home_Presenter {
     private Context context;
     private final String TAG = this.getClass().getSimpleName();
     //    private Home_Interface home_interface;
-    private NewRespository newRespository;
+    private NewRepository newRepository;
 
     public Home_Presenter(Context context, Home_Interface home_interface) {
         Log.i(TAG, "Home_Presenter: context = " + context);
         this.context = context;
 //        this.home_interface = home_interface;
-        newRespository = NewRespository.getInstance(AppDatabase.getAppDatabase(context));
+        newRepository = NewRepository.getInstance(AppDatabase.getAppDatabase(context));
     }
 
     public List<NewEntity> getNews() {
-        return newRespository.getAll();
+        return newRepository.getAll();
     }
 
 

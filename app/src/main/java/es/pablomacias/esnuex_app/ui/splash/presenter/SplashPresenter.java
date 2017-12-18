@@ -41,7 +41,7 @@ import es.pablomacias.esnuex_app.data.db.entity.NewEntity;
 import es.pablomacias.esnuex_app.data.db.entity.PartnerEntity;
 import es.pablomacias.esnuex_app.data.db.entity.TripEntity;
 import es.pablomacias.esnuex_app.data.repository.EventRepository;
-import es.pablomacias.esnuex_app.data.repository.NewRespository;
+import es.pablomacias.esnuex_app.data.repository.NewRepository;
 import es.pablomacias.esnuex_app.data.repository.PartnerRepository;
 import es.pablomacias.esnuex_app.data.repository.TripRepository;
 import es.pablomacias.esnuex_app.ui.splash.activity.SplashViewInterface;
@@ -58,7 +58,7 @@ public class SplashPresenter implements
         NewServiceInteractor.CallBackListener,
         EventServiceInteractor.CallBackListener {
     private static final String TAG = SplashPresenter.class.getSimpleName();
-    private NewRespository newRepository;
+    private NewRepository newRepository;
     private EventRepository eventRepository;
     private TripRepository tripRepository;
     private PartnerRepository partnerRepository;
@@ -75,7 +75,7 @@ public class SplashPresenter implements
 
     public void goToNextActivity() {
         NetworkUtil.newInstance(context);
-        newRepository = NewRespository.getInstance(AppDatabase.getAppDatabase(context));
+        newRepository = NewRepository.getInstance(AppDatabase.getAppDatabase(context));
         newRepository.resetRepository();
         eventRepository = EventRepository.getInstance(AppDatabase.getAppDatabase(context));
         eventRepository.resetRepository();

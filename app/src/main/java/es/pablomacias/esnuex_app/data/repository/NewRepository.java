@@ -20,6 +20,8 @@
 
 package es.pablomacias.esnuex_app.data.repository;
 
+import android.os.AsyncTask;
+
 import java.util.List;
 
 import es.pablomacias.esnuex_app.data.db.AppDatabase;
@@ -30,17 +32,18 @@ import es.pablomacias.esnuex_app.data.db.entity.NewEntity;
  * Created by pablomaciasmu on 17/11/17.
  */
 
-public class NewRespository implements Repository<NewEntity> {
-    private static NewRespository INSTANCE;
+public class NewRepository implements Repository<NewEntity> {
+    private static NewRepository INSTANCE;
     private AppDatabase appDatabase;
 
-    private NewRespository(final AppDatabase appDatabase) {
+    private NewRepository(final AppDatabase appDatabase) {
         this.appDatabase = appDatabase;
         initRepository();
     }
 
     public void resetRepository() {
-        appDatabase.newDao().truncateTable();
+//        appDatabase.newDao().truncateTable();
+        new resetDb(this.appDatabase).execute();
 
     }
 
@@ -52,9 +55,9 @@ public class NewRespository implements Repository<NewEntity> {
         appDatabase.newDao().insertAll(list);
     }
 
-    public static NewRespository getInstance(final AppDatabase appDatabase) {
+    public static NewRepository getInstance(final AppDatabase appDatabase) {
         if (INSTANCE == null) {
-            INSTANCE = new NewRespository(appDatabase);
+            INSTANCE = new NewRepository(appDatabase);
         }
         return INSTANCE;
     }
@@ -79,6 +82,7 @@ public class NewRespository implements Repository<NewEntity> {
 
     }
 
+
     @Override
     public void remove(NewEntity item) {
 
@@ -87,4 +91,33 @@ public class NewRespository implements Repository<NewEntity> {
     public void removeAll() {
         appDatabase.newDao().truncateTable();
     }
+
+    private static class PopulateDbAsync extends AsyncTask<Void, Void, Void> {
+
+        private final AppDatabase mDb;
+
+        private PopulateDbAsync(AppDatabase mDb) {
+            this.mDb = mDb;
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            return null;
+        }
+    }
+
+    private static class resetDb extends AsyncTask<Void, Void, Void> {
+        private final AppDatabase mDb;
+
+        private resetDb(AppDatabase mDb) {
+            this.mDb = mDb;
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            mDb.newDao().truncateTable();
+            return null;
+        }
+    }
+
 }

@@ -20,6 +20,8 @@
 
 package es.pablomacias.esnuex_app.data.repository;
 
+import android.os.AsyncTask;
+
 import java.util.List;
 
 import es.pablomacias.esnuex_app.data.db.AppDatabase;
@@ -39,7 +41,8 @@ public class EventRepository implements Repository<EventEntity> {
     }
 
     public void resetRepository() {
-        appDatabase.eventDao().truncateTable();
+        new resetDb(this.appDatabase).execute();
+//        appDatabase.eventDao().truncateTable();
     }
 
 
@@ -85,5 +88,19 @@ public class EventRepository implements Repository<EventEntity> {
 
     public List<EventEntity> getByDelegation(int del) {
         return appDatabase.eventDao().loadAllsByDelegation(del);
+    }
+
+    private static class resetDb extends AsyncTask<Void, Void, Void> {
+        private final AppDatabase mDb;
+
+        private resetDb(AppDatabase mDb) {
+            this.mDb = mDb;
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            mDb.eventDao().truncateTable();
+            return null;
+        }
     }
 }
